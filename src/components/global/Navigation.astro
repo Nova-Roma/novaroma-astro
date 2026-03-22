@@ -1,0 +1,153 @@
+---
+// Assets
+import Logo from "@/components/assets/Logo.astro";
+import CornerFrame from "@/components/assets/CornerFrame.astro";
+// Fundations
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+const primaryLinks = [
+  { label: "", href: "#" }, // intentional blank navlinks for spacing
+  { label: "", href: "#" }, // intentional blank navlinks for spacing
+  { label: "", href: "#" }, // intentional blank navlinks for spacing
+  { label: "Initiatives", href: "/initiatives/" },
+  { label: "Events", href: "/events/" },
+  { label: "Insights", href: "/insights/" },
+  { label: "People", href: "/people/" },
+  { label: "Ecosystems", href: "/ecosystems/" },
+  { label: "About", href: "/about/" },
+  { label: "Browse", href: "/browse/" },
+];
+---
+
+<nav class="fixed inset-x-0 top-0 z-50">
+  <Wrapper class="border-b border-dashed border-black/10">
+    <div
+      class="grid grid-cols-2 lg:grid-cols-12 items-stretch divide-x divide-dashed divide-black/10 w-full"
+    >
+      <a
+        href="/"
+        class="relative group flex items-center justify-center gap-3 text-accent-700 hover:text-gold-600 p-2 min-h-full border-l border-black/10 border-dashed lg:col-span-1 transition-colors"
+      >
+        <CornerFrame />
+        <Logo
+          class="text-sm uppercase text-accent-700 group-hover:text-gold-600 transition-colors font-medium"
+        />
+        <span class="sr-only">Nova Roma Horizon Innovation Society</span>
+      </a>
+      {
+        primaryLinks.map((link) => (
+          <div class="hidden lg:flex p-2 min-h-full flex-col items-center justify-center text-center lg:col-span-1">
+            <a
+              href={link.href}
+              class="text-sm uppercase text-accent-700 hover:text-gold-600 transition-colors font-medium"
+            >
+              {link.label}
+            </a>
+          </div>
+        ))
+      }
+      <div class="p-2 hidden lg:flex min-h-full items-center justify-center relative group lg:col-span-1">
+        <CornerFrame />
+        <Button
+          size="xs"
+          variant="accent"
+          class="w-full"
+          href="/forms/contact"
+          >Contact
+        </Button>
+      </div>
+      <div
+        class="hidden lg:block min-h-full lg:col-span-1"
+        aria-hidden="true"
+      >
+      </div>
+      <div
+        class="hidden lg:block min-h-full lg:col-span-1"
+        aria-hidden="true"
+      >
+      </div>
+      <div
+        class="hidden lg:block min-h-full lg:col-span-1"
+        aria-hidden="true"
+      >
+      </div>
+      <div
+        class="lg:hidden flex items-center justify-center p-2 border-r border-dashed border-black/10 min-h-full"
+      >
+        <Button id="mobile-toggle" size="xs" variant="outline" class="w-full">
+          Menu
+        </Button>
+      </div>
+    </div>
+  </Wrapper>
+  {/* Mobile Menu */}
+  <div
+    id="mobile-menu"
+    class="hidden fixed inset-0 z-50 text-accent-700 flex flex-col w-screen h-screen"
+  >
+    <Wrapper class="border-b border-dashed border-black/10 w-full">
+      <div
+        class="divide-x divide-dashed divide-black/10 grid grid-cols-2 w-full"
+      >
+        <a
+          href="/"
+          class="relative group flex items-center justify-center gap-3 text-accent-700 hover:text-gold-600 p-2 h-full border-l border-black/10 border-dashed transition-colors"
+        >
+          <CornerFrame />
+          <Logo
+            class="text-sm uppercase text-accent-700 group-hover:text-gold-600 transition-colors font-medium"
+          />
+          <span class="sr-only">Nova Roma Horizon Innovation Society</span>
+        </a>
+        <div class="p-2 w-full border-r border border-white/10">
+          <Button size="xs" variant="outline" id="mobile-close" class="w-full">
+            Close
+          </Button>
+        </div>
+      </div>
+    </Wrapper>
+    <Wrapper
+      variant="standard"
+      class="flex-1 flex flex-col justify-start overflow-y-auto w-full"
+    >
+      <ul
+        class="flex flex-col items-center divide-y divide-dashed divide-black/10 border-b border-x border-black/10 border-dashed"
+      >
+        {
+          primaryLinks.map((link) => (
+            <li class=" w-full">
+              <a
+                href={link.href}
+                class="flex w-full font-medium uppercase items-center justify-center gap-3 text-accent-700 hover:text-gold-600 p-2 h-full transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </Wrapper>
+  </div>
+</nav>
+
+<script is:inline>
+  (() => {
+    const mobileToggle = document.getElementById("mobile-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileClose = document.getElementById("mobile-close");
+    mobileToggle?.addEventListener("click", () => {
+      mobileMenu.classList.remove("hidden");
+      document.documentElement.classList.add("overflow-hidden");
+    });
+    mobileClose?.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+      document.documentElement.classList.remove("overflow-hidden");
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        mobileMenu.classList.add("hidden");
+        document.documentElement.classList.remove("overflow-hidden");
+      }
+    });
+  })();
+</script>

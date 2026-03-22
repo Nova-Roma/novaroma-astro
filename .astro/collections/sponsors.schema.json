@@ -1,0 +1,52 @@
+{
+  "$ref": "#/definitions/sponsors",
+  "definitions": {
+    "sponsors": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "tier": {
+          "type": "string",
+          "enum": [
+            "platinum",
+            "gold",
+            "silver",
+            "bronze"
+          ],
+          "default": "bronze"
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^(https?:\\/\\/|#_)$"
+        },
+        "logo": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url"
+          ],
+          "additionalProperties": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "url",
+        "logo"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

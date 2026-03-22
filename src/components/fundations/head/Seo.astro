@@ -1,0 +1,65 @@
+---
+import { AstroSeo } from "@astrolib/seo";
+---
+
+<AstroSeo
+  title="Nova Roma"
+  description="A Canadian non-profit bridging legacy institutions and an AI-native future through governance, education, and industry."
+  canonical="https://yourdomain.com"
+  openGraph={{
+    url: "https://yourdomain.com",
+    title: "Nova Roma",
+    description:
+      "A Canadian non-profit bridging legacy institutions and an AI-native future through governance, education, and industry.",
+    images: [
+      {
+        url: "https://yourdomain.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Nova Roma",
+        type: "image/jpeg",
+      },
+    ],
+    site_name: "Nova Roma",
+    type: "website",
+    locale: "en_US",
+  }}
+  twitter={{
+    handle: "@novaroma",
+    site: "@novaroma",
+    cardType: "summary_large_image",
+  }}
+/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://yourdomain.com/" />
+<meta property="og:title" content="Nova Roma" />
+<meta
+  property="og:description"
+  content="A Canadian non-profit bridging legacy institutions and an AI-native future."
+/>
+<meta
+  property="og:image"
+  content="https://yourdomain.com/path/to/image.jpg"
+/>
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://yourdomain.com/" />
+<meta property="twitter:title" content="Nova Roma" />
+<meta
+  property="twitter:description"
+  content="A Canadian non-profit bridging legacy institutions and an AI-native future."
+/>
+<meta
+  property="twitter:image"
+  content="https://yourdomain.com/path/to/image.jpg"
+/>
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://yourdomain.com/" />
+
+<!-- Additional SEO -->
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />

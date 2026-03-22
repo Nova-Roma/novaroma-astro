@@ -1,0 +1,17 @@
+---
+import InsightsLayout from "@/layouts/InsightsLayout.astro";
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+  const insightEntries = await getCollection("insights");
+  return insightEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<InsightsLayout frontmatter={entry.data}>
+  <Content />
+</InsightsLayout>

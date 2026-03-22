@@ -1,0 +1,31 @@
+---
+import PeopleLayout from "@/layouts/PeopleLayout.astro";
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+  const peopleEntries = await getCollection("people");
+  return peopleEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+let relatedTalks = [];
+let allSessions = [];
+if (import.meta.env.SSR) {
+  allSessions = await getCollection("sessions");
+  relatedTalks = allSessions.filter((session) =>
+    (entry.data.talks || []).includes(session.slug)
+  );
+}
+---
+
+<PeopleLayout
+  frontmatter={entry.data}
+  relatedTalks={relatedTalks}
+  sessions={allSessions}
+  slug={entry.slug}
+>
+  <Content />
+</PeopleLayout>

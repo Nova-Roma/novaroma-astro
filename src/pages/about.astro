@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-32 max-w-3xl space-y-6">
+      <Text
+        tag="h1"
+        variant="displayMD"
+        class="text-balance text-accent-500 font-display uppercase leading-tight"
+      >
+        About
+      </Text>
+      <Text tag="p" variant="textBase" class="text-base-600">
+        Nova Roma is a Canadian non-profit designed to function as a systemic
+        bridge between legacy institutional structures and the AI-native future.
+        We work across governance, education, and industry to bolster societal
+        resilience and help individuals and institutions navigate rapid
+        technological adaptation and economic shifts.
+      </Text>
+      <Text tag="p" variant="textBase" class="text-base-600">
+        Use Initiatives, Events, Insights, People, Ecosystems, and About in the
+        primary navigation to explore how content is organized. The Browse page
+        offers unified search, filters, and sorting across collections and key
+        pages.
+      </Text>
+    </Wrapper>
+  </section>
+</BaseLayout>

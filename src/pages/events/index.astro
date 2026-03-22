@@ -1,0 +1,58 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+
+const eventLinks = [
+  { label: "Schedule", href: "/schedule", description: "Day-by-day programme" },
+  { label: "Sessions", href: "/sessions", description: "Workshops and talks" },
+  { label: "Venue", href: "/venue", description: "Location details" },
+  { label: "Tickets", href: "/tickets", description: "Passes and registration" },
+  { label: "Gallery", href: "/gallery", description: "Images from the programme" },
+  { label: "Recap", href: "/recap", description: "Highlights" },
+  { label: "FAQ", href: "/faq", description: "Logistics and access" },
+];
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-32">
+      <header class="max-w-3xl space-y-4">
+        <Text
+          tag="h1"
+          variant="displayMD"
+          class="text-balance text-accent-500 font-display uppercase leading-tight"
+        >
+          Events
+        </Text>
+        <Text tag="p" variant="textBase" class="text-base-600 max-w-2xl text-balance">
+          Events are a sub-collection of the Nova Roma site: webinars, workshops,
+          and residency sessions. Use the links below to browse the sample
+          programme used in this template.
+        </Text>
+      </header>
+      <ul
+        class="mt-12 divide-y divide-dashed divide-black/10 border-y border-dashed border-black/10"
+      >
+        {
+          eventLinks.map((link) => (
+            <li class="py-6">
+              <a href={link.href} class="group block">
+                <Text
+                  tag="span"
+                  variant="textBase"
+                  class="font-display uppercase text-accent-500 group-hover:underline"
+                >
+                  {link.label}
+                </Text>
+                <Text tag="p" variant="textSM" class="text-base-600 mt-1">
+                  {link.description}
+                </Text>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </Wrapper>
+  </section>
+</BaseLayout>

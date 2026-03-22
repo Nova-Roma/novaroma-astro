@@ -1,0 +1,408 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { getCollection } from "astro:content";
+
+const insightItems = (await getCollection("insights")).map((post) => ({
+  title: post.data.title,
+  description: post.data.description,
+  url: `/insights/posts/${post.slug}`,
+  type: "insight",
+  sortKey: post.data.title.toLowerCase(),
+  sortDate: new Date(post.data.pubDate).getTime(),
+}));
+
+const peopleItems = (await getCollection("people")).map((person) => ({
+  title: person.data.name,
+  description: person.data.summary || "",
+  url: `/people/profile/${person.slug}`,
+  type: "person",
+  sortKey: person.data.name.toLowerCase(),
+  sortDate: null,
+}));
+
+const sessionItems = (await getCollection("sessions")).map((session) => ({
+  title: session.data.title,
+  description: session.data.abstract,
+  url: `/sessions/workshop/${session.slug}`,
+  type: "session",
+  sortKey: session.data.title.toLowerCase(),
+  sortDate: new Date(session.data.start).getTime(),
+}));
+
+const sponsorItems = (await getCollection("sponsors")).map((sponsor) => ({
+  title: sponsor.data.name,
+  description: `${sponsor.data.tier} tier partner`,
+  url: `/sponsors/details/${sponsor.slug}`,
+  type: "sponsor",
+  sortKey: sponsor.data.name.toLowerCase(),
+  sortDate: null,
+}));
+
+const staticPageItems = [
+  {
+    title: "Initiatives",
+    description: "Active projects and workforce programmes",
+    url: "/initiatives",
+    type: "page",
+  },
+  {
+    title: "Events",
+    description: "Webinars, workshops, and residency sessions",
+    url: "/events",
+    type: "page",
+  },
+  {
+    title: "Ecosystems",
+    description: "Regional chapters and innovation hub maps",
+    url: "/ecosystems",
+    type: "page",
+  },
+  {
+    title: "About",
+    description: "Mission and sector entry points",
+    url: "/about",
+    type: "page",
+  },
+  {
+    title: "Tickets",
+    description: "Event registration and passes",
+    url: "/tickets",
+    type: "page",
+  },
+  {
+    title: "FAQ",
+    description: "Frequently asked questions",
+    url: "/faq",
+    type: "page",
+  },
+  {
+    title: "Gallery",
+    description: "Photo gallery",
+    url: "/gallery",
+    type: "page",
+  },
+  {
+    title: "Venue",
+    description: "Venue information and location",
+    url: "/venue",
+    type: "page",
+  },
+  {
+    title: "Recap",
+    description: "Event highlights",
+    url: "/recap",
+    type: "page",
+  },
+  {
+    title: "Partners",
+    description: "Partners and collaborators",
+    url: "/partners",
+    type: "page",
+  },
+  {
+    title: "Contact",
+    description: "Get in touch",
+    url: "/forms/contact",
+    type: "page",
+  },
+  {
+    title: "Register",
+    description: "Register for programmes and events",
+    url: "/forms/register",
+    type: "page",
+  },
+].map((p) => ({
+  ...p,
+  sortKey: p.title.toLowerCase(),
+  sortDate: null,
+}));
+
+const allItems = [
+  ...insightItems,
+  ...peopleItems,
+  ...sessionItems,
+  ...sponsorItems,
+  ...staticPageItems,
+];
+
+const totalCount = allItems.length;
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-32">
+      <header class="max-w-4xl space-y-4">
+        <Text
+          tag="h1"
+          variant="displayMD"
+          class="text-balance text-accent-500 font-display uppercase leading-tight"
+        >
+          Browse
+        </Text>
+        <Text
+          tag="p"
+          variant="textBase"
+          class="text-accent-600 font-medium max-w-2xl mt-2 text-balance"
+        >
+          Search, filter by collection, and sort everything on this site in one
+          place. {totalCount} entries across insights, people, sessions,
+          sponsors, and key pages.
+        </Text>
+      </header>
+
+      <div class="mt-12 space-y-8">
+        <div class="grid gap-6 lg:grid-cols-12 lg:gap-8 lg:items-end">
+          <div class="lg:col-span-5">
+            <label for="browse-query" class="sr-only">Search</label>
+            <input
+              id="browse-query"
+              type="search"
+              placeholder="Search title and description…"
+              autocomplete="off"
+              class="w-full bg-base-100 border border-dashed border-black/15 px-4 py-3 h-12 text-sm text-accent-600 placeholder:text-base-400 focus:border-accent-500 focus:outline-none"
+            />
+          </div>
+          <div class="lg:col-span-4">
+            <label
+              for="browse-sort"
+              class="block text-xs uppercase font-medium text-accent-600 mb-2"
+              >Sort by</label
+            >
+            <select
+              id="browse-sort"
+              class="w-full bg-base-100 border border-dashed border-black/15 px-4 py-3 h-12 text-sm text-accent-600 focus:border-accent-500 focus:outline-none"
+            >
+              <option value="relevance">Relevance (when searching)</option>
+              <option value="title-asc" selected>Title A–Z</option>
+              <option value="title-desc">Title Z–A</option>
+              <option value="newest">Newest first (dated entries)</option>
+            </select>
+          </div>
+          <div class="lg:col-span-3">
+            <p
+              id="browse-count"
+              class="text-xs uppercase font-medium text-accent-600"
+              aria-live="polite"
+            >
+            </p>
+          </div>
+        </div>
+
+        <fieldset
+          class="border border-dashed border-black/15 p-4 lg:p-6"
+          aria-describedby="browse-filter-hint"
+        >
+          <legend class="text-xs uppercase font-medium text-accent-600 px-1">
+            Collections
+          </legend>
+          <p id="browse-filter-hint" class="sr-only">
+            Show or hide item types. At least one must stay selected.
+          </p>
+          <div
+            class="flex flex-wrap gap-x-6 gap-y-3 mt-2"
+            id="browse-type-filters"
+          >
+            <label class="flex items-center gap-2 text-sm text-accent-600 cursor-pointer">
+              <input
+                type="checkbox"
+                name="type"
+                value="insight"
+                checked
+                data-type-filter
+                class="border-black/20 text-accent-500 focus:ring-accent-500"
+              />
+              Insights
+            </label>
+            <label class="flex items-center gap-2 text-sm text-accent-600 cursor-pointer">
+              <input
+                type="checkbox"
+                name="type"
+                value="person"
+                checked
+                data-type-filter
+                class="border-black/20 text-accent-500 focus:ring-accent-500"
+              />
+              People
+            </label>
+            <label class="flex items-center gap-2 text-sm text-accent-600 cursor-pointer">
+              <input
+                type="checkbox"
+                name="type"
+                value="session"
+                checked
+                data-type-filter
+                class="border-black/20 text-accent-500 focus:ring-accent-500"
+              />
+              Sessions
+            </label>
+            <label class="flex items-center gap-2 text-sm text-accent-600 cursor-pointer">
+              <input
+                type="checkbox"
+                name="type"
+                value="sponsor"
+                checked
+                data-type-filter
+                class="border-black/20 text-accent-500 focus:ring-accent-500"
+              />
+              Sponsors
+            </label>
+            <label class="flex items-center gap-2 text-sm text-accent-600 cursor-pointer">
+              <input
+                type="checkbox"
+                name="type"
+                value="page"
+                checked
+                data-type-filter
+                class="border-black/20 text-accent-500 focus:ring-accent-500"
+              />
+              Pages
+            </label>
+          </div>
+        </fieldset>
+
+        <div
+          id="browse-results"
+          class="border border-dashed border-black/15 min-h-[12rem]"
+          role="region"
+          aria-label="Search results"
+        >
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>
+
+<script is:inline define:vars={{ allItems }}>
+  const typeLabels = {
+    insight: "Insight",
+    person: "Person",
+    session: "Session",
+    sponsor: "Sponsor",
+    page: "Page",
+  };
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function getSelectedTypes() {
+    return Array.from(
+      document.querySelectorAll("[data-type-filter]:checked")
+    ).map((el) => el.value);
+  }
+
+  function sortItems(items, mode, query) {
+    const out = items.slice();
+    if (mode === "relevance" && query) {
+      return out;
+    }
+    if (mode === "title-asc" || (mode === "relevance" && !query)) {
+      out.sort((a, b) => a.sortKey.localeCompare(b.sortKey));
+      return out;
+    }
+    if (mode === "title-desc") {
+      out.sort((a, b) => b.sortKey.localeCompare(a.sortKey));
+      return out;
+    }
+    if (mode === "newest") {
+      out.sort((a, b) => {
+        if (a.sortDate == null && b.sortDate == null) {
+          return a.sortKey.localeCompare(b.sortKey);
+        }
+        if (a.sortDate == null) return 1;
+        if (b.sortDate == null) return -1;
+        return b.sortDate - a.sortDate;
+      });
+      return out;
+    }
+    return out;
+  }
+
+  function render(items) {
+    const root = document.getElementById("browse-results");
+    const countEl = document.getElementById("browse-count");
+    if (!root || !countEl) return;
+
+    countEl.textContent = `${items.length} result${items.length === 1 ? "" : "s"}`;
+
+    if (items.length === 0) {
+      root.innerHTML = `<p class="p-8 text-sm text-accent-600 text-center">No entries match your search and filters.</p>`;
+      return;
+    }
+
+    root.innerHTML = `<ul class="divide-y divide-dashed divide-black/10">${items
+      .map(
+        (item) => `
+      <li>
+        <a href="${escapeHtml(item.url)}" class="block p-4 sm:p-5 hover:bg-accent-50/60 transition-colors">
+          <span class="text-xs uppercase font-medium text-accent-500">${typeLabels[item.type] || item.type}</span>
+          <span class="block mt-1 font-medium text-accent-600">${escapeHtml(item.title)}</span>
+          <span class="block mt-1 text-sm text-base-600 line-clamp-2">${escapeHtml(item.description)}</span>
+        </a>
+      </li>`
+      )
+      .join("")}</ul>`;
+  }
+
+  function run() {
+    const input = document.getElementById("browse-query");
+    const sortSelect = document.getElementById("browse-sort");
+    if (!input || !sortSelect || typeof Fuse === "undefined") return;
+
+    const fuse = new Fuse(allItems, {
+      keys: ["title", "description"],
+      threshold: 0.32,
+      includeScore: true,
+    });
+
+    const apply = () => {
+      let selected = getSelectedTypes();
+      if (selected.length === 0) {
+        document.querySelectorAll("[data-type-filter]").forEach((el) => {
+          el.checked = true;
+        });
+        selected = getSelectedTypes();
+      }
+
+      const q = input.value.trim();
+      let pool;
+      if (q) {
+        pool = fuse.search(q).map((r) => r.item);
+      } else {
+        pool = allItems.filter((item) => selected.includes(item.type));
+        pool = sortItems(pool, sortSelect.value, q);
+        render(pool);
+        return;
+      }
+
+      pool = pool.filter((item) => selected.includes(item.type));
+
+      if (q && sortSelect.value === "relevance") {
+        render(pool);
+        return;
+      }
+
+      pool = sortItems(pool, sortSelect.value, q);
+      render(pool);
+    };
+
+    input.addEventListener("input", apply);
+    sortSelect.addEventListener("change", apply);
+    document.querySelectorAll("[data-type-filter]").forEach((el) => {
+      el.addEventListener("change", apply);
+    });
+
+    apply();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+</script>

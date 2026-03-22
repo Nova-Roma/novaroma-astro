@@ -1,0 +1,26 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-32 max-w-3xl space-y-6">
+      <Text
+        tag="h1"
+        variant="displayMD"
+        class="text-balance text-accent-500 font-display uppercase leading-tight"
+      >
+        Initiatives
+      </Text>
+      <Text tag="p" variant="textBase" class="text-base-600">
+        Initiatives cover active projects and workforce programmes: AI-native
+        workforce development, strategic adaptation for organizations and
+        education partners, and the innovation sanctuary for career innovators.
+        Content collections for initiatives will expand here as programmes go
+        live.
+      </Text>
+    </Wrapper>
+  </section>
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-32 max-w-3xl space-y-6">
+      <Text
+        tag="h1"
+        variant="displayMD"
+        class="text-balance text-accent-500 font-display uppercase leading-tight"
+      >
+        Ecosystems
+      </Text>
+      <Text tag="p" variant="textBase" class="text-base-600">
+        Regional chapters and annotated maps of innovation hubs will live in the
+        Ecosystems collection alongside the Network. This section will host
+        geography-linked content as it is published.
+      </Text>
+    </Wrapper>
+  </section>
+</BaseLayout>

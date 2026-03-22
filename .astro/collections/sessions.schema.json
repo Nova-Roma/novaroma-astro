@@ -1,0 +1,76 @@
+{
+  "$ref": "#/definitions/sessions",
+  "definitions": {
+    "sessions": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "abstract": {
+          "type": "string",
+          "minLength": 40
+        },
+        "people": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "day": {
+          "type": "string",
+          "enum": [
+            "day-1",
+            "day-2",
+            "day-3",
+            "day-4",
+            "day-5",
+            "day-6",
+            "day-7"
+          ]
+        },
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        },
+        "room": {
+          "type": "string"
+        },
+        "track": {
+          "type": "string"
+        },
+        "level": {
+          "type": "string",
+          "enum": [
+            "beginner",
+            "intermediate",
+            "advanced"
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "abstract",
+        "people",
+        "day",
+        "start",
+        "end",
+        "room"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

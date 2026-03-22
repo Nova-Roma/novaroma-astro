@@ -1,0 +1,132 @@
+---
+// Assets
+import Logo from "@/components/assets/Logo.astro";
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SubsCta from "@/components/ctas/SubsCta.astro";
+const footerSections = [
+  {
+    title: "Events",
+    links: [
+      { label: "Events hub", href: "/events" },
+      { label: "Sessions", href: "/sessions" },
+      { label: "Schedule", href: "/schedule" },
+      { label: "Tickets", href: "/tickets" },
+      { label: "Insights", href: "/insights" },
+    ],
+  },
+  {
+    title: "Essentials",
+    links: [
+      { label: "People", href: "/people" },
+      { label: "Initiatives", href: "/initiatives" },
+      { label: "Ecosystems", href: "/ecosystems" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Venue", href: "/venue" },
+      { label: "Partners", href: "/partners" },
+      { label: "About", href: "/about" },
+      { label: "Register", href: "/forms/register" },
+      { label: "Contact", href: "/forms/contact" },
+    ],
+  },
+];
+---
+
+
+
+    <div
+      aria-hidden="true"
+      class="grid grid-cols-12 *:p-8 *:aspect-square *:bg-white/10 *:flex *:size-full w-full px-8 bg-primary"
+    >
+      <div class="col-start-2"></div>
+      <div class="col-start-6"></div>
+      <div class="col-start-8"></div>
+      <div></div>
+      <div></div>
+    </div>
+
+
+<footer class="bg-primary">
+  <Wrapper variant="standard" class="pt-24 pb-8">
+    <SubsCta />
+    <div
+      class="grid lg:grid-cols-4 border-t border-dashed border-black/10 mt-8 pt-8"
+    >
+      <div class="lg:col-span-2">
+        <a href="/" class="inline-flex items-center gap-3 text-white">
+          <Logo class="h-6 w-auto" />
+          <span class="sr-only">Nova Roma Horizon Innovation Society</span>
+        </a>
+        <Text
+          tag="p"
+          variant="textSM"
+          class="max-w-xl text-base-200 mt-2 text-balance"
+        >
+          Nova Roma Horizon Innovation Society is a Canadian non-profit
+          operating at the intersection of governance, education, and industry.
+          We equip individuals and institutions to navigate rapid technological
+          adaptation and economic shifts.
+        </Text>
+        <div
+          class="flex flex-wrap items-center gap-4 text-xs uppercase text-white mt-4"
+        >
+          <span>Evidence-based foresight</span>
+          <span aria-hidden="true">•</span>
+          <span>Cross-sector collaboration</span>
+        </div>
+      </div>
+      <div class="grid gap-y-10 grid-cols-2 lg:col-span-2">
+        {
+          footerSections.map((section) => (
+            <div class="space-y-4">
+              <Text
+                tag="h2"
+                variant="textXS"
+                class="text-white font-display uppercase"
+              >
+                {section.title}
+              </Text>
+              <ul class="space-y-1">
+                {section.links.map((link) => (
+                  <li>
+                    <a
+                      href={link.href}
+                      class="text-base-200 hover:text-gold-200 text-xs transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col gap-6 border-t border-dashed border-white/15 pt-8 mt-8 uppercase md:flex-row md:items-center md:justify-between"
+    >
+      <div class="flex flex-wrap items-center gap-3 text-xs text-white">
+        <span>© {new Date().getFullYear()} Nova Roma Horizon Innovation Society</span>
+        <span aria-hidden="true">•</span>
+        <a href="mailto:hello@novaroma.org" class="transition-colors hover:text-gold-200"
+          >hello@novaroma.org</a
+        >
+      </div>
+      <div class="flex flex-wrap items-center gap-3 text-xs text-white">
+        <a href="/infopages/terms" class="transition-colors hover:text-gold-200">Terms</a>
+        <span aria-hidden="true">•</span>
+        <a href="/infopages/privacy" class="transition-colors hover:text-gold-200"
+          >Privacy</a
+        >
+        <span aria-hidden="true">•</span>
+        <a href="/infopages/code-of-conduct" class="transition-colors hover:text-gold-200"
+          >Code of conduct</a
+        >
+      </div>
+    </div>
+  </Wrapper>
+</footer>
