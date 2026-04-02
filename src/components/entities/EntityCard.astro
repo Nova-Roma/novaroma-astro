@@ -2,21 +2,8 @@
 import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
 const entity = Astro.props.entity;
-const { name, kind, tier, logo } = entity.data;
+const { name, logo } = entity.data;
 const detailUrl = `/entities/details/${entity.slug}`;
-
-const tierLabels = {
-  platinum: "Platinum sponsor",
-  gold: "Gold sponsor",
-  silver: "Silver sponsor",
-  bronze: "Bronze sponsor",
-};
-const roleLabel =
-  kind === "community"
-    ? "Community"
-    : kind === "partner"
-      ? "Partner"
-      : tierLabels[tier ?? "bronze"] || "Partner";
 const logoAlt = logo?.alt || name;
 ---
 
@@ -26,26 +13,23 @@ const logoAlt = logo?.alt || name;
     title={name}
     class="absolute inset-0 z-10"
     aria-label={`${name} details`}></a>
-  <div class="flex flex-col items-center gap-4 p-8 text-center">
+  <div class="flex flex-col items-center justify-center p-8 text-center">
     {
       logo?.url ? (
         <Image
           src={logo.url}
           alt={logoAlt}
-          width={logo.width ?? 320}
-          height={logo.height ?? 180}
+          width={logo.width ?? 400}
+          height={logo.height ?? 220}
           loading="lazy"
-          class="h-10 w-auto object-contain"
+          class="h-20 w-auto max-w-full object-contain sm:h-24 md:h-28"
         />
       ) : (
-        <div class="flex h-20 w-full items-center justify-center text-xs uppercase   text-base-400">
+        <div class="flex min-h-20 sm:min-h-24 md:min-h-28 w-full items-center justify-center text-xs uppercase text-base-400">
           Logo coming soon
         </div>
       )
     }
-    <Text tag="span" variant="textXS" class="uppercase text-base-200">
-      {roleLabel}
-    </Text>
     <Text tag="h3" variant="textLG" class="sr-only">
       {name}
     </Text>

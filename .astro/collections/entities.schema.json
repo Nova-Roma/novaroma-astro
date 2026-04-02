@@ -30,8 +30,16 @@
           "type": "string"
         },
         "url": {
-          "type": "string",
-          "pattern": "^(https?:\\/\\/|#_)$"
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uri"
+            },
+            {
+              "type": "string",
+              "const": "#_"
+            }
+          ]
         },
         "logo": {
           "type": "object",

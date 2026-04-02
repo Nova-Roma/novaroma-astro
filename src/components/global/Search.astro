@@ -12,7 +12,9 @@ const posts = await Promise.all(
 );
 
 const initiativeEntries = await Promise.all(
-  (await getCollection("initiatives")).map(async (entry) => ({
+  (await getCollection("initiatives"))
+    .filter((entry) => !entry.data.draft)
+    .map(async (entry) => ({
     title: entry.data.title,
     description: entry.data.description,
     slug: entry.slug,

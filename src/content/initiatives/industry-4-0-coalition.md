@@ -10,6 +10,7 @@ tags:
   - credentials
   - resilience
 featured: true
+draft: true
 ---
 
 Advanced manufacturing and cyber-physical systems do not respect borders; neither should the pathways that prepare workers to operate and improve them. The coalition aligns employers, unions, polytechnics, and standards bodies around **stackable credentials** and shared competency language.

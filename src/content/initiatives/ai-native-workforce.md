@@ -10,6 +10,7 @@ tags:
   - education
   - ai
 featured: true
+draft: true
 ---
 
 Nova Roma’s AI-native workforce programme meets organizations where they are: some need literacy sprints, others need embedded coaching alongside delivery. We combine structured curricula with live projects so skills transfer sticks.

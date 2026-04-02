@@ -1,11 +1,11 @@
 ---
-name: Emil Steiner
-role: Creative Director
-company: Ratio Studio
+name: James Cheng
+role: Founder
+company: Nova Roma Horizon
 headshot:
-  url: /src/images/speakers/emil-steiner.png
-  alt: Emil Steiner headshot
-location: Basel, Switzerland
+  url: /src/images/people/james-cheng.jpg
+  alt: James Cheng headshot
+location: Toronto, Canada
 summary: "Creative director bringing Swiss rationalism to contemporary design systems and team culture."
 tags:
   - typography

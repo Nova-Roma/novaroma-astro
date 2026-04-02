@@ -32,6 +32,7 @@ const initiatives = defineCollection({
       }),
       tags: z.array(z.string()),
       featured: z.boolean().default(false),
+      draft: z.boolean().default(false),
     }),
 });
 const people = defineCollection({
@@ -104,7 +105,7 @@ const entity = defineCollection({
         .enum(["platinum", "gold", "silver", "bronze"])
         .default("bronze"),
       description: z.string().optional(),
-      url: z.string().regex(/^(https?:\/\/|#_)$/),
+      url: z.union([z.string().url(), z.literal("#_")]),
       logo: z.object({
         url: image(),
         alt: z.string().optional(),

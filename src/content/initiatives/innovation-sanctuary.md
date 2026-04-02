@@ -8,6 +8,7 @@ image:
 tags:
   - community
   - prototyping
+draft: true
 ---
 
 The sanctuary is not a accelerator with demo-day pressure—it is deliberate slack. Members receive studio time, lightweight governance templates, and introductions to aligned funders when a concept is ready.

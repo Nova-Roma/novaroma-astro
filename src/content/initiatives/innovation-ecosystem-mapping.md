@@ -9,6 +9,7 @@ tags:
   - ecosystems
   - education
   - mapping
+draft: true
 ---
 
 You cannot strengthen what you cannot see. Regional teams combine interviews, open data, and participatory workshops to produce **maps**: who funds whom, where ideas stall, which bridges are missing between academia, industry, and community.

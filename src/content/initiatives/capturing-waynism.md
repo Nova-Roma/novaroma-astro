@@ -10,6 +10,7 @@ tags:
   - work-integrated-learning
   - innovation
 featured: true
+draft: true
 ---
 
 Wayne Chang’s teaching wove rigorous theory with lived practice in innovation and work-integrated learning. **Capturing Waynism** gathers syllabi, recordings where permissions allow, student artifacts, and alumni reflections so that unfinished threads can be continued in the open.

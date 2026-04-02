@@ -8,6 +8,9 @@ import { formatCalendarDate } from "@/lib/formatCalendarDate";
 const compact = Astro.props.compact === true;
 const variant = Astro.props.variant ?? "default";
 const isList = variant === "list";
+const isInitiativeDraft =
+  Astro.props.post.collection === "initiatives" &&
+  Astro.props.post.data.draft === true;
 const postHrefPrefix =
   Astro.props.postHrefPrefix ?? "/insights/posts";
 const { url, title, description, pubDate, imageSrc, imageAlt } = {
@@ -31,10 +34,28 @@ const { url, title, description, pubDate, imageSrc, imageAlt } = {
 
 {
   isList ? (
-    <article class="group relative border-b border-dashed border-black/10 py-4 transition-colors hover:bg-accent-50/50">
-      <a href={url} title={title} class="absolute inset-0 z-10">
-        <span class="sr-only">{title}</span>
-      </a>
+    <article
+      class:list={[
+        "group relative border-b border-dashed border-black/10 py-4 transition-colors hover:bg-accent-50/50",
+        isInitiativeDraft && "cursor-default",
+      ]}
+      title={isInitiativeDraft ? "Draft — full details coming soon" : undefined}
+    >
+      {!isInitiativeDraft && (
+        <a href={url} title={title} class="absolute inset-0 z-10">
+          <span class="sr-only">{title}</span>
+        </a>
+      )}
+      {isInitiativeDraft && (
+        <div class="absolute inset-0 z-20 pointer-events-none">
+          <div class="absolute inset-0 bg-white/50" aria-hidden="true" />
+          <span
+            class="absolute top-2 right-2 rounded-sm bg-white/95 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent-600 shadow-sm"
+          >
+            In Draft
+          </span>
+        </div>
+      )}
       <div class="relative flex gap-4 sm:gap-5">
         <div class="relative z-[1] h-16 w-24 shrink-0 overflow-hidden bg-base-200/40 sm:h-[4.5rem] sm:w-28">
           {imageSrc ? (
@@ -76,9 +97,25 @@ const { url, title, description, pubDate, imageSrc, imageAlt } = {
       class:list={[
         "group relative flex h-full flex-col bg-accent-500",
         compact && "overflow-hidden rounded-sm",
+        isInitiativeDraft && "cursor-default",
       ]}
+      title={isInitiativeDraft ? "Draft — full details coming soon" : undefined}
     >
-      <a href={url} title={title} class="absolute inset-0 z-10"> </a>
+      {!isInitiativeDraft && (
+        <a href={url} title={title} class="absolute inset-0 z-10">
+          <span class="sr-only">{title}</span>
+        </a>
+      )}
+      {isInitiativeDraft && (
+        <div class="absolute inset-0 z-20 pointer-events-none">
+          <div class="absolute inset-0 bg-white/50" aria-hidden="true" />
+          <span
+            class="absolute top-2 right-2 rounded-sm bg-white/95 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-accent-600 shadow-sm"
+          >
+            In Draft
+          </span>
+        </div>
+      )}
       {imageSrc ? (
         <Image
           width={compact ? 400 : 640}

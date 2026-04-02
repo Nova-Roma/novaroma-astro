@@ -3,7 +3,9 @@ import InitiativeLayout from "@/layouts/InitiativeLayout.astro";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const entries = await getCollection("initiatives");
-  return entries.map((entry) => ({
+  return entries
+    .filter((entry) => !entry.data.draft)
+    .map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));

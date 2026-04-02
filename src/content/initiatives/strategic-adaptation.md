@@ -8,6 +8,7 @@ image:
 tags:
   - governance
   - strategy
+draft: true
 ---
 
 Universities, crown corporations, and regulated industries often need the same thing: a defensible narrative for what changes now versus later. We run discovery sprints with executives and union stewards in the room so trade-offs are explicit.
