@@ -14,7 +14,7 @@ Set direction for what we publish and how it sounds: editorial calendar, style g
 
 ## You
 
-- Eight or more years in editorial, content strategy, or related leadership roles, ideally in mission-driven or complex subject matter environments.
+- Three or more years in editorial, content strategy, or related leadership roles, ideally in mission-driven or complex subject matter environments.
 - Excellent judgment on structure, tone, and audience; experience managing freelancers or internal contributors.
 - Comfortable collaborating with design, programmes, and leadership; French or additional languages are an asset.
 

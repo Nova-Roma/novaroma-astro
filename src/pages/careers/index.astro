@@ -4,6 +4,7 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import { getCollection } from "astro:content";
+import { formatCalendarDate } from "@/lib/formatCalendarDate";
 
 const employmentLabels: Record<string, string> = {
   "full-time": "Full-time",
@@ -86,7 +87,7 @@ const totalOpen = jobs.length;
                     </span>
                     <span class="block mt-3 text-xs text-base-500">
                       Posted{" "}
-                      {job.data.postedDate.toLocaleDateString("en-CA", {
+                      {formatCalendarDate(job.data.postedDate, "en-CA", {
                         year: "numeric",
                         month: "short",
                         day: "numeric",

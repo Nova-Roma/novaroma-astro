@@ -3,14 +3,14 @@ title: Editorial Illustrator
 department: Creative & editorial
 location: Remote (Canada)
 employmentType: contract
-postedDate: 2026-04-01
+postedDate: 2026-02-16
 description: Create illustrations and visual systems for insights, programmes, and member-facing stories across digital and print touchpoints.
 draft: false
 ---
 
 ## Role
 
-Develop original artwork—from spot illustrations to short visual essays—that supports long-form insights, event materials, and campaign moments. You collaborate with editors and programme leads to align tone, accessibility, and brand consistency.
+Develop original artwork from spot illustrations to short visual essays that supports long-form insights, event materials, and campaign moments. You collaborate with editors and programme leads to align tone, accessibility, and brand consistency.
 
 ## You
 

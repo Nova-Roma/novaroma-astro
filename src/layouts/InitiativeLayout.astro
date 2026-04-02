@@ -6,9 +6,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Content
+import { formatCalendarDate } from "@/lib/formatCalendarDate";
+
 const { frontmatter } = Astro.props;
 const publishedAt = new Date(frontmatter.pubDate);
-const formattedDate = publishedAt.toLocaleDateString("en-US", {
+const formattedDate = formatCalendarDate(publishedAt, "en-US", {
   year: "numeric",
   month: "long",
   day: "numeric",

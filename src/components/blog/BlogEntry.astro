@@ -3,6 +3,7 @@
 import { Image } from "astro:assets";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
+import { formatCalendarDate } from "@/lib/formatCalendarDate";
 // Content
 const compact = Astro.props.compact === true;
 const variant = Astro.props.variant ?? "default";
@@ -13,11 +14,15 @@ const { url, title, description, pubDate, imageSrc, imageAlt } = {
   url: `${postHrefPrefix.replace(/\/$/, "")}/${Astro.props.post.slug}`,
   title: Astro.props.post.data.title,
   description: Astro.props.post.data.description,
-  pubDate: new Date(Astro.props.post.data.pubDate).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }),
+  pubDate: formatCalendarDate(
+    new Date(Astro.props.post.data.pubDate),
+    "en-US",
+    {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }
+  ),
   imageSrc:
     Astro.props.post.data.image?.src ?? Astro.props.post.data.image?.url,
   imageAlt: Astro.props.post.data.image?.alt || Astro.props.post.data.title,
