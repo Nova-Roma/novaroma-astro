@@ -8,7 +8,7 @@ export async function GET(context: APIContext) {
     title: "Nova Roma",
     description:
       "A Canadian non-profit bridging legacy institutions and an AI-native future through governance, education, and industry.",
-    site: context.site ?? new URL("https://yourdomain.com"),
+    site: context.site ?? new URL("https://novaromahorizon.org"),
     items: insights
       .sort(
         (a, b) =>

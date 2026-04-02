@@ -7,6 +7,7 @@ url: "#_"
 logo:
   url: /src/images/sponsors/swissted.svg
   alt: Swissted logo
+featured: true
 ---
 
 ## About Swissted

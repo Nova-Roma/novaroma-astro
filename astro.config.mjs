@@ -22,6 +22,6 @@ export default defineConfig({
     skipInline: false,
     drafts: true
   },
-  site: 'https://yourdomain.com',
+  site: 'https://novaromahorizon.org',
   integrations: [ sitemap(), mdx()]
 });

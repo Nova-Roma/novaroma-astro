@@ -24,4 +24,4 @@ Contract role, fully remote within Canada; professional development support and 
 
 ## How to apply
 
-Send your CV and a short writing sample (≤ 5 pages) to [careers@novaroma.org](mailto:careers@novaroma.org). Use the subject line **Research Assistant**.
+Send your CV and a short writing sample (≤ 5 pages) to [careers@novaromahorizon.org](mailto:careers@novaromahorizon.org). Use the subject line **Research Assistant**.

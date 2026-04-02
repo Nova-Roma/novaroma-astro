@@ -24,4 +24,4 @@ Contract engagement, fully remote within Canada, competitive compensation, and a
 
 ## How to apply
 
-Email [careers@novaroma.org](mailto:careers@novaroma.org) with **Content Director** in the subject line. Include your CV, links to three representative pieces or programmes you led, and a brief note on your editorial philosophy.
+Email [careers@novaromahorizon.org](mailto:careers@novaromahorizon.org) with **Content Director** in the subject line. Include your CV, links to three representative pieces or programmes you led, and a brief note on your editorial philosophy.

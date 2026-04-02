@@ -7,6 +7,7 @@ url: "#_"
 logo:
   url: /src/images/sponsors/medium.svg
   alt: Medium logo
+featured: true
 ---
 
 ## About Medium

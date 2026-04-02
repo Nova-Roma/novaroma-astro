@@ -7,6 +7,7 @@ url: "#_"
 logo:
   url: /src/images/sponsors/polar-sh.svg
   alt: Polar SH logo
+featured: true
 ---
 
 ## About Polar SH

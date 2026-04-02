@@ -144,7 +144,7 @@ content:
     filename: "{primary}.md"
     view:
       primary: name
-      fields: [name, kind, tier]
+      fields: [name, kind, tier, featured]
       sort: [kind, tier]
     fields:
       - { name: name, label: Name, type: string, required: true }
@@ -157,6 +157,7 @@ content:
         type: select
         options: [platinum, gold, silver, bronze]
       - { name: description, label: Short description, type: string }
+      - { name: featured, label: Featured on homepage, type: boolean }
       - { name: url,  label: Website URL, type: string }
       - name: logo
         label: Logo

@@ -7,6 +7,7 @@ url: "#_"
 logo:
   url: /src/images/sponsors/google.svg
   alt: Google logo
+featured: true
 ---
 
 ## About Google

@@ -109,6 +109,7 @@ const entity = defineCollection({
         url: image(),
         alt: z.string().optional(),
       }),
+      featured: z.boolean().default(false),
     }),
 });
 

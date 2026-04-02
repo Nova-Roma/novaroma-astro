@@ -1,92 +1,89 @@
 ---
 page: Privacy
-pubDate: 2025-10-22
+pubDate: 2026-04-02
 ---
 
-California Resident Notice at Collection
-========================================
+### Privacy notice for Nova Roma Horizon Innovation Society (Ontario, Canada)
 
-If you are a California resident, the California Consumer Privacy Act, as amended by the California Privacy Rights Act of 2020 (“**CCPA**”), requires us to provide some additional information to California residents. This Section only applies to you if you are a California resident, although please note that this information and the rights afforded herein are the same as offered to our other users in our main Privacy Policy. This Section does not apply to personal information we collect from our employees and job applicants in their capacity as employees and job applicants, as such information practices are described in separate policies.
+**Nova Roma Horizon Innovation Society** (“**Nova Roma**”, “**we**”, “**us**”, or “**our**”) respects your privacy. This notice describes how we collect, use, disclose, and safeguard personal information in connection with our websites, events, programs, newsletters, and related services (collectively, the “**Services**”), in accordance with Canada’s **Personal Information Protection and Electronic Documents Act** (**PIPEDA**) and, where applicable, substantially similar provincial legislation and other Canadian privacy requirements.
 
-The following chart details these activities:
+This notice applies to personal information we collect in the course of operating the Services from individuals in Canada and elsewhere, unless a separate privacy statement applies (for example, certain employment or grant contexts).
 
-**Category of personal information**
+### Who we are
 
-**Purposes of use**
+Nova Roma Horizon Innovation Society is a Canadian non-profit organization. For privacy inquiries, contact us at [hello@novaromahorizon.org](mailto:hello@novaromahorizon.org) or through our [contact form](/forms/contact). You may also write to us at the mailing address we publish on this site when available.
 
-**Categories of Third Parties Information**
+### What personal information we collect
 
-**Categories of Third Parties**
+Depending on how you interact with us, we may collect:
 
-Contact information (such as your full name, phone number, email address)
+- **Contact and identity information** — such as name, email address, organization, and city or region.
+- **Communication content** — messages you send through forms, email, or event registration.
+- **Event and program information** — attendance, dietary or accessibility needs you choose to share, and related logistics.
+- **Technical and usage information** — such as IP address, browser type, device identifiers, general location derived from IP, and pages viewed, collected through logs and similar technologies.
+- **Newsletter or subscription data** — preferences and subscription status.
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+We aim to collect only what we need for the purposes described below.
 
-Affiliated entities; Service providers; Entities for legal purposes
+### How we use personal information
 
-We do not share/sell
+We use personal information to:
 
-Customer service interaction information (including optional surveys and when you ask for help)
+- Provide, operate, and improve the Services, including our website and communications.
+- Respond to inquiries, process registrations, and administer events and programs.
+- Send newsletters or updates where you have subscribed or where permitted by law.
+- Protect the security and integrity of our Services and users.
+- Meet legal, regulatory, and insurance obligations.
+- Analyze aggregated or de-identified usage to understand how our Services are used.
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+We do not sell your personal information.
 
-Affiliated entities; Service providers; Entities for legal purposes
+### Legal basis (PIPEDA)
 
-We do not share/sell
+Under PIPEDA, we collect, use, and disclose personal information only for purposes a reasonable person would consider appropriate in the circumstances. We rely on consent where required (for example, for marketing emails), and on other permitted grounds such as implied consent for reasonable operational uses, or legal obligation where applicable.
 
-Product interaction information
+### When we share personal information
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+We may share personal information with:
 
-Affiliated entities; Service providers; Entities for legal purposes
+- **Service providers** who assist us (for example, hosting, email delivery, analytics, or event tools), under contracts that require appropriate protection of personal information.
+- **Professional advisers** such as lawyers or accountants when needed.
+- **Authorities** when required by law, court order, or lawful request, or to protect rights, safety, or security.
 
-We do not share/sell
+If we use service providers outside Canada, we take steps appropriate under PIPEDA to ensure a comparable level of protection through contractual means or other safeguards.
 
-Internet network and device information (such as mobile device information, IP address, and information about your interaction with the services)
+### Cookies and similar technologies
 
-Provide the Services; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+We may use cookies, analytics, and similar technologies to remember preferences, measure traffic, and improve the Services. You can control cookies through your browser settings. Where required, we will obtain consent for non-essential cookies in line with applicable guidance.
 
-Affiliated entities; Service providers; Entities for legal purposes;
+### Retention
 
-We do not share/sell
+We retain personal information only as long as necessary for the purposes above, including legal, accounting, or reporting requirements, and then securely delete or anonymize it.
 
-Login information (such as your username and password)
+### Your rights
 
-Provide the Services; Comply with law or defend our legal rights; Security/fraud prevention; Comply with law or defend our legal rights
+Subject to applicable law, you have the right to:
 
-Affiliated entities; Service providers; Entities for legal purposes
+- **Access** the personal information we hold about you.
+- **Request correction** of inaccurate or incomplete information.
+- **Withdraw consent** where processing is based on consent, subject to legal or contractual restrictions.
 
-We do not share/sell
+To exercise these rights, contact [hello@novaromahorizon.org](mailto:hello@novaromahorizon.org). We may need to verify your identity. We will respond within a reasonable time as required by PIPEDA.
 
-Professional or employment information (such as the name and address of the company you work for and your title)
+If you are not satisfied with our response, you may complain to the **Office of the Privacy Commissioner of Canada** ([opc.gc.ca](https://www.priv.gc.ca)) or, where applicable, a provincial privacy commissioner.
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+### Children
 
-Affiliated entities; Service providers; Entities for legal purposes;
+Our Services are not directed at children under 13. We do not knowingly collect personal information from children without appropriate parental or guardian consent where required. If you believe we have collected such information, contact us and we will take steps to delete it.
 
-We do not share/sell
+### Security
 
-Other information (any other information you choose to provide directly to us, including optional profile photos)
+We implement reasonable administrative, technical, and physical safeguards designed to protect personal information against unauthorized access, disclosure, alteration, or destruction. No method of transmission over the Internet is completely secure.
 
-Provide the Services; Communicate with you; Analyze use of and improve the services; With your consent; Comply with law or defend our legal rights; Security/fraud prevention
+### Changes to this notice
 
-Affiliated entities; Service providers; Entities for legal purposes;
+We may update this notice from time to time. The “Last updated” date at the top of this page will change when we do. We encourage you to review this page periodically. Continued use of the Services after updates means you accept the revised notice, except where additional consent is required by law.
 
-We do not sell/share
+### Contact
 
-For more information about each category of personal information, purpose of use, and third parties to which we disclose personal information, please see the "What we collect and why," and "When we access or disclose you information" sections of our Privacy Policy.
-
-**Your Choices Regarding “Sharing” and “Selling”**: You have the right to opt out of our sale/sharing of your personal information for purposes of online analytics and advertising. Currently, we do not sell or share your data as defined by the CCPA and we have not done so over the past 12 months from the effective date of this Privacy Policy.
-
-**Other CCPA Rights.** If we ever offer any financial incentives in exchange for your personal information, we will provide you with appropriate information about such incentives.
-
-The CCPA also allows you to limit the use or disclosure of your “sensitive personal information” (as defined in the CCPA) if your sensitive personal information is used for certain purposes. Please note that we do not use or disclose sensitive personal information other than for business purposes for which you cannot opt out under the CCPA.
-
-Please see the “Your rights with respect to your information” section of our Policy above for information about the additional rights you have with respect to your personal information under California law and how to exercise them.
-
-Retention of Your Personal Information. Please see the “Retention Of Your Information” section belowof our Privacy Policy for more information.
-
-Shine the Light Disclosure
---------------------------
-
-The California "Shine the Light" law gives residents of California the right under certain circumstances to request information from us regarding the manner in which we disclose certain categories of personal information (as defined in the Shine the Light law) with third parties for their direct marketing purposes. We currently do not disclose your personal information to third parties for their own direct marketing purposes.
+Privacy questions: [hello@novaromahorizon.org](mailto:hello@novaromahorizon.org) or our [contact form](/forms/contact).

@@ -24,4 +24,4 @@ Fully remote within Canada. Project-based or rolling contract, depending on volu
 
 ## How to apply
 
-Email [careers@novaroma.org](mailto:careers@novaroma.org) with **Editorial Illustrator** in the subject line. Include a link to your portfolio and two sentences on how you approach visual storytelling for non-fiction or mission-driven work.
+Email [careers@novaromahorizon.org](mailto:careers@novaromahorizon.org) with **Editorial Illustrator** in the subject line. Include a link to your portfolio and two sentences on how you approach visual storytelling for non-fiction or mission-driven work.
