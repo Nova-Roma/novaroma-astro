@@ -5,21 +5,27 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import SponsorCard from "@/components/sponsors/SponsorCard.astro";
+import EntityCard from "@/components/entities/EntityCard.astro";
 // Content
 import { Image } from "astro:assets";
 const frontmatter = Astro.props.frontmatter;
-const sponsors = Astro.props.sponsors || [];
+const entities = Astro.props.entities || [];
 const tierLabels = {
-  platinum: "Platinum Sponsor",
-  gold: "Gold Sponsor",
-  silver: "Silver Sponsor",
-  bronze: "Bronze Sponsor",
+  platinum: "Platinum sponsor",
+  gold: "Gold sponsor",
+  silver: "Silver sponsor",
+  bronze: "Bronze sponsor",
 };
-const tierLabel = tierLabels[frontmatter.tier] || "Sponsor";
-const otherSponsors = sponsors.filter((s) => s.slug !== frontmatter.slug);
+const kind = frontmatter.kind ?? "event_sponsor";
+const tierLabel =
+  kind === "community"
+    ? "Community"
+    : kind === "partner"
+      ? "Partner"
+      : tierLabels[frontmatter.tier] || "Partner";
+const otherEntities = entities.filter((e) => e.slug !== frontmatter.slug);
 const tierOrder = ["platinum", "gold", "silver", "bronze"];
-const sortedOtherSponsors = otherSponsors
+const sortedOtherEntities = otherEntities
   .slice()
   .sort((a, b) => {
     const tierA = tierOrder.indexOf(a.data.tier || "bronze");
@@ -28,6 +34,8 @@ const sortedOtherSponsors = otherSponsors
     return a.data.name.localeCompare(b.data.name);
   })
   .slice(0, 6);
+const externalUrl = frontmatter.url;
+const hasExternalLink = externalUrl && externalUrl !== "#_";
 ---
 
 <BaseLayout>
@@ -70,16 +78,20 @@ const sortedOtherSponsors = otherSponsors
               )
             }
           </div>
-          <Button
-            size="sm"
-            variant="outline"
-            href={frontmatter.url}
-            target="_blank"
-            rel="noreferrer"
-            class="mt-4"
-          >
-            Visit partner site
-          </Button>
+          {
+            hasExternalLink ? (
+              <Button
+                size="sm"
+                variant="outline"
+                href={externalUrl}
+                target="_blank"
+                rel="noreferrer"
+                class="mt-4"
+              >
+                Visit website
+              </Button>
+            ) : null
+          }
         </div>
       </div>
       <section class="mt-24 lg:mt-48">
@@ -88,12 +100,12 @@ const sortedOtherSponsors = otherSponsors
           variant="displaySM"
           class="font-display uppercase text-accent-500"
         >
-          More sponsors
+          More partners
         </Text>
         <div class="grid md:grid-cols-2 xl:grid-cols-3 mt-4">
           {
-            sortedOtherSponsors.map((sponsor) => (
-              <SponsorCard sponsor={sponsor} />
+            sortedOtherEntities.map((entry) => (
+              <EntityCard entity={entry} />
             ))
           }
         </div>

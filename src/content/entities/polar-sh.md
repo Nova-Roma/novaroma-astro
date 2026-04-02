@@ -1,6 +1,8 @@
 ---
 name: Polar SH
+kind: event_sponsor
 tier: bronze
+description: Swiss-based digital infrastructure and cloud solutions.
 url: "#_"
 logo:
   url: /src/images/sponsors/polar-sh.svg

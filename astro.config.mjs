@@ -4,6 +4,10 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
+  redirects: {
+    "/sponsors": "/entities",
+    "/sponsors/details/[...slug]": "/entities/details/[...slug]",
+  },
   vite: {
     plugins: [tailwindcss()],
   },

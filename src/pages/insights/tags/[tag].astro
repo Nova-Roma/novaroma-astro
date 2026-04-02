@@ -24,6 +24,12 @@ export async function getStaticPaths() {
 }
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+const sortedPosts = posts
+  .slice()
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  );
 ---
 
 <BaseLayout>
@@ -36,8 +42,10 @@ const { posts } = Astro.props;
       >
         Insights tagged with {tag}
       </Text>
-      <div class="grid lg:grid-cols-3 mt-4">
-        {posts.map((post) => <BlogEntry post={post} />)}
+      <div class="mt-10 max-w-4xl">
+        {sortedPosts.map((post) => (
+          <BlogEntry post={post} variant="list" />
+        ))}
       </div>
     </Wrapper>
   </section>

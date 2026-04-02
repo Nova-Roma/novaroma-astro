@@ -1,18 +1,22 @@
 ---
 import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
-// Content
-const sponsor = Astro.props.sponsor;
-const { name, tier, url: externalUrl, logo } = sponsor.data;
-const detailUrl = `/sponsors/details/${sponsor.slug}`;
-const hasExternalLink = externalUrl && externalUrl !== "#_";
+const entity = Astro.props.entity;
+const { name, kind, tier, logo } = entity.data;
+const detailUrl = `/entities/details/${entity.slug}`;
+
 const tierLabels = {
-  platinum: "Platinum Sponsor",
-  gold: "Gold Sponsor",
-  silver: "Silver Sponsor",
-  bronze: "Bronze Sponsor",
+  platinum: "Platinum sponsor",
+  gold: "Gold sponsor",
+  silver: "Silver sponsor",
+  bronze: "Bronze sponsor",
 };
-const tierLabel = tierLabels[tier] || "Sponsor";
+const roleLabel =
+  kind === "community"
+    ? "Community"
+    : kind === "partner"
+      ? "Partner"
+      : tierLabels[tier ?? "bronze"] || "Partner";
 const logoAlt = logo?.alt || name;
 ---
 
@@ -40,7 +44,7 @@ const logoAlt = logo?.alt || name;
       )
     }
     <Text tag="span" variant="textXS" class="uppercase text-base-200">
-      {tierLabel}
+      {roleLabel}
     </Text>
     <Text tag="h3" variant="textLG" class="sr-only">
       {name}

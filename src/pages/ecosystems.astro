@@ -2,23 +2,52 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import EntityCard from "@/components/entities/EntityCard.astro";
+import { getCollection } from "astro:content";
+
+const entities = (await getCollection("entities"))
+  .slice()
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
 <BaseLayout>
   <section>
-    <Wrapper variant="standard" class="py-32 max-w-3xl space-y-6">
-      <Text
-        tag="h1"
-        variant="displayMD"
-        class="text-balance text-accent-500 font-display uppercase leading-tight"
-      >
-        Ecosystems
-      </Text>
-      <Text tag="p" variant="textBase" class="text-base-600">
-        Regional chapters and annotated maps of innovation hubs will live in the
-        Ecosystems collection alongside the Network. This section will host
-        geography-linked content as it is published.
-      </Text>
+    <Wrapper variant="standard" class="py-32">
+      <div class="max-w-3xl space-y-6">
+        <Text
+          tag="h1"
+          variant="displayMD"
+          class="text-balance text-accent-500 font-display uppercase leading-tight"
+        >
+          Ecosystems
+        </Text>
+        <Text tag="p" variant="textBase" class="text-base-500 italic">
+          Ecosystem mapping is under development. 
+          <br/>
+          Regional data and annotated maps of 
+          innovation hubs will be launched as the project evolves.
+        </Text>
+        <Text tag="p" variant="textBase" class="text-base-600">
+          Affiliated communities, event sponsors, and partners in the network.
+          Regional chapters and annotated maps of innovation hubs will expand
+          here alongside this directory as content is published.
+        </Text>
+      </div>
+
+      <div class="mt-16">
+        <Text
+          tag="h2"
+          variant="displaySM"
+          class="font-display uppercase text-accent-500"
+        >
+          Communities
+        </Text>
+        <div
+          class="grid md:grid-cols-2 lg:grid-cols-4 gap-0 mt-6 border border-dashed border-black/10"
+        >
+          {entities.map((entity) => <EntityCard entity={entity} />)}
+        </div>
+      </div>
     </Wrapper>
   </section>
 </BaseLayout>

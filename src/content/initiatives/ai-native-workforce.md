@@ -1,5 +1,5 @@
 ---
-title: "AI-Native Workforce Development"
+title: "AI-Native Workforce"
 pubDate: 2026-01-15
 description: Residency-style training that pairs practitioners with mentors so teams adopt AI tools without losing craft or judgment.
 image:
@@ -9,6 +9,7 @@ tags:
   - workforce
   - education
   - ai
+featured: true
 ---
 
 Nova Roma’s AI-native workforce programme meets organizations where they are: some need literacy sprints, others need embedded coaching alongside delivery. We combine structured curricula with live projects so skills transfer sticks.

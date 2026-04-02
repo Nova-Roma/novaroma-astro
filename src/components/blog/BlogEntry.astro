@@ -5,9 +5,11 @@ import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
 // Content
 const compact = Astro.props.compact === true;
+const variant = Astro.props.variant ?? "default";
+const isList = variant === "list";
 const postHrefPrefix =
   Astro.props.postHrefPrefix ?? "/insights/posts";
-const { url, title, description, pubDate, imageSrc, imageAlt, author } = {
+const { url, title, description, pubDate, imageSrc, imageAlt } = {
   url: `${postHrefPrefix.replace(/\/$/, "")}/${Astro.props.post.slug}`,
   title: Astro.props.post.data.title,
   description: Astro.props.post.data.description,
@@ -19,71 +21,115 @@ const { url, title, description, pubDate, imageSrc, imageAlt, author } = {
   imageSrc:
     Astro.props.post.data.image?.src ?? Astro.props.post.data.image?.url,
   imageAlt: Astro.props.post.data.image?.alt || Astro.props.post.data.title,
-  author: Astro.props.post.data.author,
 };
 ---
 
-<article
-  class:list={[
-    "group relative flex h-full flex-col bg-accent-500",
-    compact && "overflow-hidden rounded-sm",
-  ]}
->
-  <a href={url} title={title} class="absolute inset-0 z-10"> </a>
-  {
-    imageSrc ? (
-      <Image
-        width={compact ? 400 : 640}
-        height={compact ? 225 : 800}
-        src={imageSrc}
-        alt={imageAlt}
-        class:list={[
-          "w-full object-cover object-center shrink-0",
-          compact ? "aspect-video max-h-36" : "aspect-sqaure",
-        ]}
-        loading="lazy"
-      />
-    ) : (
+{
+  isList ? (
+    <article class="group relative border-b border-dashed border-black/10 py-4 transition-colors hover:bg-accent-50/50">
+      <a href={url} title={title} class="absolute inset-0 z-10">
+        <span class="sr-only">{title}</span>
+      </a>
+      <div class="relative flex gap-4 sm:gap-5">
+        <div class="relative z-[1] h-16 w-24 shrink-0 overflow-hidden bg-base-200/40 sm:h-[4.5rem] sm:w-28">
+          {imageSrc ? (
+            <Image
+              width={224}
+              height={126}
+              src={imageSrc}
+              alt={imageAlt}
+              class="h-full w-full object-cover object-center"
+              loading="lazy"
+            />
+          ) : (
+            <div class="flex h-full w-full items-center justify-center text-[10px] uppercase tracking-wide text-base-400">
+              —
+            </div>
+          )}
+        </div>
+        <div class="min-w-0 flex-1 space-y-1 pr-2">
+          <Text variant="textXS" tag="p" class="uppercase text-accent-500">
+            <time datetime={Astro.props.post.data.pubDate}>
+              {pubDate}
+            </time>
+          </Text>
+          <Text
+            tag="h3"
+            variant="textLG"
+            class="font-display uppercase leading-snug text-accent-700"
+          >
+            {title}
+          </Text>
+          <Text tag="p" variant="textSM" class="text-base-600 line-clamp-2">
+            {description}
+          </Text>
+        </div>
+      </div>
+    </article>
+  ) : (
+    <article
+      class:list={[
+        "group relative flex h-full flex-col bg-accent-500",
+        compact && "overflow-hidden rounded-sm",
+      ]}
+    >
+      <a href={url} title={title} class="absolute inset-0 z-10"> </a>
+      {imageSrc ? (
+        <Image
+          width={compact ? 400 : 640}
+          height={compact ? 225 : 800}
+          src={imageSrc}
+          alt={imageAlt}
+          class:list={[
+            "w-full object-cover object-center shrink-0",
+            compact ? "aspect-video max-h-36" : "aspect-square",
+          ]}
+          loading="lazy"
+        />
+      ) : (
+        <div
+          class:list={[
+            "flex w-full items-center justify-center border-b border-dashed border-white/10 text-xs uppercase text-base-400",
+            compact ? "aspect-video max-h-36" : "aspect-square",
+          ]}
+        >
+          Image coming soon
+        </div>
+      )}
       <div
         class:list={[
-          "flex w-full items-center justify-center border-b border-dashed border-white/10 text-xs uppercase text-base-400",
-          compact ? "aspect-video max-h-36" : "aspect-sqaure",
+          "flex flex-1 flex-col",
+          compact ? "gap-2 p-4" : "gap-4 p-8",
         ]}
       >
-        Image coming soon
+        <div class="space-y-2">
+          <Text variant="textXS" tag="p" class="uppercase text-white">
+            <time datetime={Astro.props.post.data.pubDate}>
+              {pubDate}
+            </time>
+          </Text>
+          <Text
+            tag="h3"
+            variant={compact ? "textLG" : "textXL"}
+            class:list={[
+              "uppercase font-display text-white",
+              compact ? "mt-2" : "mt-8",
+            ]}
+          >
+            {title}
+          </Text>
+          <Text
+            tag="p"
+            variant="textSM"
+            class:list={[
+              "text-base-200",
+              compact ? "line-clamp-2" : "line-clamp-3",
+            ]}
+          >
+            {description}
+          </Text>
+        </div>
       </div>
-    )
-  }
-  <div
-    class:list={[
-      "flex flex-1 flex-col",
-      compact ? "gap-2 p-4" : "gap-4 p-8",
-    ]}
-  >
-    <div class="space-y-2">
-      <Text variant="textXS" tag="p" class="uppercase text-white">
-        <time datetime={Astro.props.post.data.pubDate}>{pubDate}</time>
-      </Text>
-      <Text
-        tag="h3"
-        variant={compact ? "textLG" : "textXL"}
-        class:list={[
-          "uppercase font-display text-white",
-          compact ? "mt-2" : "mt-8",
-        ]}
-      >
-        {title}
-      </Text>
-      <Text
-        tag="p"
-        variant="textSM"
-        class:list={[
-          "text-base-200",
-          compact ? "line-clamp-2" : "line-clamp-3",
-        ]}
-      >
-        {description}
-      </Text>
-    </div>
-  </div>
-</article>
+    </article>
+  )
+}

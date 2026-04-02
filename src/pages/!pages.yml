@@ -135,23 +135,28 @@ content:
       - { name: body,     label: Body, type: rich-text }
 
   # ---------------------
-  # SPONSORS
+  # ENTITIES (communities, sponsors, partners)
   # ---------------------
-  - name: sponsors
-    label: Sponsors
+  - name: entities
+    label: Entities
     type: collection
-    path: src/content/sponsors
+    path: src/content/entities
     filename: "{primary}.md"
     view:
       primary: name
-      fields: [name, tier]
-      sort: [tier]
+      fields: [name, kind, tier]
+      sort: [kind, tier]
     fields:
       - { name: name, label: Name, type: string, required: true }
+      - name: kind
+        label: Kind
+        type: select
+        options: [community, event_sponsor, partner]
       - name: tier
         label: Tier
         type: select
         options: [platinum, gold, silver, bronze]
+      - { name: description, label: Short description, type: string }
       - { name: url,  label: Website URL, type: string }
       - name: logo
         label: Logo

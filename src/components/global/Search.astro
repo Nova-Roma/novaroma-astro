@@ -41,13 +41,17 @@ const sessions = await Promise.all(
   }))
 );
 
-const sponsors = await Promise.all(
-  (await getCollection("sponsors")).map(async (sponsor) => ({
-    title: sponsor.data.name,
-    description: sponsor.data.description || "",
-    slug: sponsor.slug,
-    url: `/sponsors/details/${sponsor.slug}`,
-    type: "sponsor",
+const entities = await Promise.all(
+  (await getCollection("entities")).map(async (entity) => ({
+    title: entity.data.name,
+    description:
+      entity.data.description ||
+      (entity.data.kind === "event_sponsor"
+        ? `${entity.data.tier} tier partner`
+        : entity.data.kind.replace("_", " ")),
+    slug: entity.slug,
+    url: `/entities/details/${entity.slug}`,
+    type: "entity",
   }))
 );
 
@@ -143,7 +147,7 @@ const allContent = [
   ...initiativeEntries,
   ...peopleEntries,
   ...sessions,
-  ...sponsors,
+  ...entities,
   ...careerEntries,
   ...staticPages,
 ];
@@ -271,7 +275,7 @@ const allContent = [
         initiative: "Initiatives",
         person: "People",
         session: "Sessions",
-        sponsor: "Sponsors",
+        entity: "Entities",
         career: "Careers",
         page: "Pages",
       };

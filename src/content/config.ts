@@ -91,12 +91,19 @@ const session = defineCollection({
   }),
 });
 
-const sponsor = defineCollection({
+/** Affiliated communities, event sponsors, partners, and related organisations. */
+const entity = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
       name: z.string(),
-      tier: z.enum(["platinum", "gold", "silver", "bronze"]).default("bronze"),
+      kind: z
+        .enum(["community", "event_sponsor", "partner"])
+        .default("event_sponsor"),
+      tier: z
+        .enum(["platinum", "gold", "silver", "bronze"])
+        .default("bronze"),
+      description: z.string().optional(),
       url: z.string().regex(/^(https?:\/\/|#_)$/),
       logo: z.object({
         url: image(),
@@ -129,6 +136,6 @@ export const collections = {
   initiatives,
   people,
   sessions: session,
-  sponsors: sponsor,
+  entities: entity,
   careers,
 };

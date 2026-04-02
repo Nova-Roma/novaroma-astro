@@ -40,12 +40,16 @@ const sessionItems = (await getCollection("sessions")).map((session) => ({
   sortDate: new Date(session.data.start).getTime(),
 }));
 
-const sponsorItems = (await getCollection("sponsors")).map((sponsor) => ({
-  title: sponsor.data.name,
-  description: `${sponsor.data.tier} tier partner`,
-  url: `/sponsors/details/${sponsor.slug}`,
-  type: "sponsor",
-  sortKey: sponsor.data.name.toLowerCase(),
+const entityItems = (await getCollection("entities")).map((entity) => ({
+  title: entity.data.name,
+  description:
+    entity.data.description ||
+    (entity.data.kind === "event_sponsor"
+      ? `${entity.data.tier} tier partner`
+      : entity.data.kind.replace("_", " ")),
+  url: `/entities/details/${entity.slug}`,
+  type: "entity",
+  sortKey: entity.data.name.toLowerCase(),
   sortDate: null,
 }));
 
@@ -144,7 +148,7 @@ const allItems = [
   ...initiativeItems,
   ...peopleItems,
   ...sessionItems,
-  ...sponsorItems,
+  ...entityItems,
   ...careerItems,
   ...staticPageItems,
 ];
@@ -170,7 +174,7 @@ const totalCount = allItems.length;
         >
           Search, filter by collection, and sort everything on this site in one
           place. {totalCount} entries across insights, initiatives, people,
-          sessions, sponsors, careers, and key pages.
+          sessions, entities, careers, and key pages.
         </Text>
       </header>
 
@@ -274,12 +278,12 @@ const totalCount = allItems.length;
               <input
                 type="checkbox"
                 name="type"
-                value="sponsor"
+                value="entity"
                 checked
                 data-type-filter
                 class="border-black/20 text-accent-500 focus:ring-accent-500"
               />
-              Sponsors
+              Entities
             </label>
             <label class="flex items-center gap-2 text-sm text-accent-600 cursor-pointer">
               <input
@@ -324,7 +328,7 @@ const totalCount = allItems.length;
     initiative: "Initiative",
     person: "Person",
     session: "Session",
-    sponsor: "Sponsor",
+    entity: "Entity",
     career: "Career",
     page: "Page",
   };

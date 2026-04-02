@@ -1,6 +1,8 @@
 ---
 name: Google
+kind: event_sponsor
 tier: gold
+description: Global technology leader in AI, cloud, and accessibility.
 url: "#_"
 logo:
   url: /src/images/sponsors/google.svg

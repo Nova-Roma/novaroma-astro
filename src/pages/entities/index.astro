@@ -5,10 +5,11 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import SponsorCard from "@/components/sponsors/SponsorCard.astro";
+import EntityCard from "@/components/entities/EntityCard.astro";
 // Content
 import { getCollection } from "astro:content";
-const sponsors = await getCollection("sponsors");
+const allEntities = await getCollection("entities");
+const sponsors = allEntities.filter((e) => e.data.kind === "event_sponsor");
 const tierOrder = ["platinum", "gold", "silver", "bronze"];
 const tierMeta = {
   platinum: {
@@ -104,7 +105,7 @@ const tierSummary = `${totalSponsors} sponsors supporting Swiss Design Week`;
               </div>
               <div class="grid  md:grid-cols-2 lg:grid-cols-4 mt-4 lg:col-span-9 ">
                 {tier.sponsors.map((sponsor) => (
-                  <SponsorCard sponsor={sponsor} />
+                  <EntityCard entity={sponsor} />
                 ))}
               </div>
             </div>

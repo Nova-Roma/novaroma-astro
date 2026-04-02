@@ -1,6 +1,8 @@
 ---
 name: Medium
+kind: event_sponsor
 tier: gold
+description: Publishing platform for writers, thinkers, and creators worldwide.
 url: "#_"
 logo:
   url: /src/images/sponsors/medium.svg

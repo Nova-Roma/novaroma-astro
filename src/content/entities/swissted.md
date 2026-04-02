@@ -1,6 +1,8 @@
 ---
 name: Swissted
+kind: event_sponsor
 tier: silver
+description: Creative collective inspired by Swiss graphic design and modern art.
 url: "#_"
 logo:
   url: /src/images/sponsors/swissted.svg
