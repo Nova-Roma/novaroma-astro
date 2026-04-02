@@ -1,0 +1,53 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import BlogEntry from "@/components/blog/BlogEntry.astro";
+import { getCollection } from "astro:content";
+
+const allInitiatives = await getCollection("initiatives");
+const byDate = (
+  a: { data: { pubDate: Date } },
+  b: { data: { pubDate: Date } }
+) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+
+let initiatives = allInitiatives.filter((i) => i.data.featured).sort(byDate);
+if (initiatives.length === 0) {
+  initiatives = [...allInitiatives].sort(byDate).slice(0, 4);
+}
+const display = initiatives.slice(0, 4);
+---
+
+{
+  display.length > 0 && (
+    <section>
+      <Wrapper variant="standard" class="py-24">
+        <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-12">
+          <div class="lg:col-span-6 lg:-mt-4">
+            <Text
+              tag="h2"
+              variant="displayXL"
+              class="font-display uppercase leading-tight text-accent-500"
+            >
+              Featured initiatives
+            </Text>
+            <Text tag="p" variant="textSM" class="text-base-600 text-balance">
+              Major works by the Nova Roma team and partners.
+            </Text>
+          </div>
+          <div class="flex flex-col gap-2 lg:col-start-12">
+            <Button href="/initiatives" size="sm" variant="outline" class="w-full">
+              See All
+            </Button>
+          </div>
+        </div>
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-5">
+          {display.map((post) => (
+            <BlogEntry post={post} postHrefPrefix="/initiatives" compact />
+          ))}
+        </div>
+      </Wrapper>
+    </section>
+  )
+}

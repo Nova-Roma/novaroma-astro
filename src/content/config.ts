@@ -19,6 +19,21 @@ const insights = defineCollection({
       tags: z.array(z.string()),
     }),
 });
+
+const initiatives = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      pubDate: z.date(),
+      description: z.string(),
+      image: z.object({
+        url: image(),
+        alt: z.string(),
+      }),
+      tags: z.array(z.string()),
+      featured: z.boolean().default(false),
+    }),
+});
 const people = defineCollection({
   type: "content",
   schema: ({ image }) =>
@@ -90,10 +105,30 @@ const sponsor = defineCollection({
     }),
 });
 
+const careers = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    department: z.string(),
+    location: z.string(),
+    employmentType: z.enum([
+      "full-time",
+      "part-time",
+      "contract",
+      "internship",
+    ]),
+    postedDate: z.date(),
+    description: z.string(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   infopages,
   insights,
+  initiatives,
   people,
   sessions: session,
   sponsors: sponsor,
+  careers,
 };

@@ -9,17 +9,19 @@ const primaryLinks = [
   { label: "", href: "#" }, // intentional blank navlinks for spacing
   { label: "", href: "#" }, // intentional blank navlinks for spacing
   { label: "", href: "#" }, // intentional blank navlinks for spacing
+  { label: "", href: "#" }, // intentional blank navlinks for spacing
   { label: "Initiatives", href: "/initiatives/" },
-  { label: "Events", href: "/events/" },
+  // { label: "Events", href: "/events/" }, // hidden for now
   { label: "Insights", href: "/insights/" },
   { label: "People", href: "/people/" },
   { label: "Ecosystems", href: "/ecosystems/" },
+  { label: "Careers", href: "/careers/" },
   { label: "About", href: "/about/" },
-  { label: "Browse", href: "/browse/" },
+  // { label: "Browse", href: "/browse/" },  // hidden for now
 ];
 ---
 
-<nav class="fixed inset-x-0 top-0 z-50">
+<nav class="fixed inset-x-0 top-0 z-50 bg-accent-50/90">
   <Wrapper class="border-b border-dashed border-black/10">
     <div
       class="grid grid-cols-2 lg:grid-cols-12 items-stretch divide-x divide-dashed divide-black/10 w-full"
@@ -83,7 +85,7 @@ const primaryLinks = [
   {/* Mobile Menu */}
   <div
     id="mobile-menu"
-    class="hidden fixed inset-0 z-50 text-accent-700 flex flex-col w-screen h-screen"
+    class="hidden fixed inset-0 z-50 bg-accent-50/90 text-accent-700 flex flex-col w-screen h-screen"
   >
     <Wrapper class="border-b border-dashed border-black/10 w-full">
       <div

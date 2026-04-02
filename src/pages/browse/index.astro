@@ -13,6 +13,15 @@ const insightItems = (await getCollection("insights")).map((post) => ({
   sortDate: new Date(post.data.pubDate).getTime(),
 }));
 
+const initiativeItems = (await getCollection("initiatives")).map((entry) => ({
+  title: entry.data.title,
+  description: entry.data.description,
+  url: `/initiatives/${entry.slug}`,
+  type: "initiative",
+  sortKey: entry.data.title.toLowerCase(),
+  sortDate: new Date(entry.data.pubDate).getTime(),
+}));
+
 const peopleItems = (await getCollection("people")).map((person) => ({
   title: person.data.name,
   description: person.data.summary || "",
@@ -38,6 +47,17 @@ const sponsorItems = (await getCollection("sponsors")).map((sponsor) => ({
   type: "sponsor",
   sortKey: sponsor.data.name.toLowerCase(),
   sortDate: null,
+}));
+
+const careerItems = (
+  await getCollection("careers", ({ data }) => !data.draft)
+).map((job) => ({
+  title: job.data.title,
+  description: job.data.description,
+  url: `/careers/${job.slug}/`,
+  type: "career",
+  sortKey: job.data.title.toLowerCase(),
+  sortDate: new Date(job.data.postedDate).getTime(),
 }));
 
 const staticPageItems = [
@@ -121,9 +141,11 @@ const staticPageItems = [
 
 const allItems = [
   ...insightItems,
+  ...initiativeItems,
   ...peopleItems,
   ...sessionItems,
   ...sponsorItems,
+  ...careerItems,
   ...staticPageItems,
 ];
 
@@ -147,8 +169,8 @@ const totalCount = allItems.length;
           class="text-accent-600 font-medium max-w-2xl mt-2 text-balance"
         >
           Search, filter by collection, and sort everything on this site in one
-          place. {totalCount} entries across insights, people, sessions,
-          sponsors, and key pages.
+          place. {totalCount} entries across insights, initiatives, people,
+          sessions, sponsors, careers, and key pages.
         </Text>
       </header>
 
@@ -219,6 +241,17 @@ const totalCount = allItems.length;
               <input
                 type="checkbox"
                 name="type"
+                value="initiative"
+                checked
+                data-type-filter
+                class="border-black/20 text-accent-500 focus:ring-accent-500"
+              />
+              Initiatives
+            </label>
+            <label class="flex items-center gap-2 text-sm text-accent-600 cursor-pointer">
+              <input
+                type="checkbox"
+                name="type"
                 value="person"
                 checked
                 data-type-filter
@@ -252,6 +285,17 @@ const totalCount = allItems.length;
               <input
                 type="checkbox"
                 name="type"
+                value="career"
+                checked
+                data-type-filter
+                class="border-black/20 text-accent-500 focus:ring-accent-500"
+              />
+              Careers
+            </label>
+            <label class="flex items-center gap-2 text-sm text-accent-600 cursor-pointer">
+              <input
+                type="checkbox"
+                name="type"
                 value="page"
                 checked
                 data-type-filter
@@ -277,9 +321,11 @@ const totalCount = allItems.length;
 <script is:inline define:vars={{ allItems }}>
   const typeLabels = {
     insight: "Insight",
+    initiative: "Initiative",
     person: "Person",
     session: "Session",
     sponsor: "Sponsor",
+    career: "Career",
     page: "Page",
   };
 

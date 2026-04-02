@@ -1,0 +1,143 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { getCollection } from "astro:content";
+
+const employmentLabels: Record<string, string> = {
+  "full-time": "Full-time",
+  "part-time": "Part-time",
+  contract: "Contract",
+  internship: "Internship",
+};
+
+const jobs = (await getCollection("careers", ({ data }) => !data.draft)).sort(
+  (a, b) =>
+    new Date(b.data.postedDate).getTime() -
+    new Date(a.data.postedDate).getTime()
+);
+const totalOpen = jobs.length;
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-32">
+      <div>
+        <Text tag="p" variant="textXS" class="uppercase text-base-600">
+          Join the team
+        </Text>
+        <Text
+          tag="h1"
+          variant="displayMD"
+          class="text-balance text-accent-500 font-display uppercase leading-tight mt-8"
+        >
+          Careers
+        </Text>
+        <Text
+          tag="p"
+          variant="textBase"
+          class="text-base-600 font-medium max-w-2xl mt-2 text-balance"
+        >
+          Open roles at Nova Roma Horizon Innovation Society. We are a
+          Canadian non-profit working at the intersection of governance,
+          education, and industry—building capacity for technological and
+          economic adaptation.
+        </Text>
+      </div>
+
+      <div class="mt-12 space-y-6">
+        <Text
+          tag="h2"
+          variant="displaySM"
+          class="font-display uppercase text-accent-500"
+        >
+          Open positions ({totalOpen})
+        </Text>
+        {
+          jobs.length === 0 ? (
+            <Text tag="p" variant="textBase" class="text-base-600 max-w-2xl">
+              There are no open listings right now. Follow our updates or send a
+              speculative application to{" "}
+              <a
+                class="text-accent-600 underline hover:text-gold-600"
+                href="mailto:careers@novaroma.org"
+              >
+                careers@novaroma.org
+              </a>
+              .
+            </Text>
+          ) : (
+            <ul class="border border-dashed border-black/15 divide-y divide-dashed divide-black/10">
+              {jobs.map((job) => (
+                <li>
+                  <a
+                    href={`/careers/${job.slug}/`}
+                    class="block p-5 sm:p-6 hover:bg-accent-50/60 transition-colors"
+                  >
+                    <span class="text-xs uppercase font-medium text-accent-500">
+                      {job.data.department} ·{" "}
+                      {employmentLabels[job.data.employmentType] ||
+                        job.data.employmentType}{" "}
+                      · {job.data.location}
+                    </span>
+                    <span class="block mt-2 font-medium text-accent-600 text-lg">
+                      {job.data.title}
+                    </span>
+                    <span class="block mt-1 text-sm text-base-600 line-clamp-2">
+                      {job.data.description}
+                    </span>
+                    <span class="block mt-3 text-xs text-base-500">
+                      Posted{" "}
+                      {job.data.postedDate.toLocaleDateString("en-CA", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      <section
+        class="gap-x-12 gap-y-8 border border-white/10 bg-accent-500 p-8 md:flex md:items-center md:justify-between mt-24"
+      >
+        <div class="max-w-2xl space-y-4">
+          <Text
+            tag="h2"
+            variant="displaySM"
+            class="font-display uppercase text-white"
+          >
+            General inquiries
+          </Text>
+          <Text tag="p" variant="textSM" class="text-base-200 lg:text-balance">
+            Don’t see a fit? We still welcome introductions. Share your focus
+            area and relevant links at{" "}
+            <a class="underline" href="mailto:careers@novaroma.org"
+              >careers@novaroma.org</a
+            >.
+          </Text>
+        </div>
+        <div
+          class="flex flex-wrap items-center justify-center gap-2 md:justify-end"
+        >
+          <Button
+            size="sm"
+            variant="default"
+            class="w-fit"
+            href="mailto:careers@novaroma.org"
+          >
+            Email careers
+          </Button>
+          <Button size="sm" variant="muted" class="w-fit" href="/forms/contact">
+            Contact
+          </Button>
+        </div>
+      </section>
+    </Wrapper>
+  </section>
+</BaseLayout>

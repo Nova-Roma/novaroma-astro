@@ -11,6 +11,16 @@ const posts = await Promise.all(
   }))
 );
 
+const initiativeEntries = await Promise.all(
+  (await getCollection("initiatives")).map(async (entry) => ({
+    title: entry.data.title,
+    description: entry.data.description,
+    slug: entry.slug,
+    url: `/initiatives/${entry.slug}`,
+    type: "initiative",
+  }))
+);
+
 const peopleEntries = await Promise.all(
   (await getCollection("people")).map(async (person) => ({
     title: person.data.name,
@@ -38,6 +48,18 @@ const sponsors = await Promise.all(
     slug: sponsor.slug,
     url: `/sponsors/details/${sponsor.slug}`,
     type: "sponsor",
+  }))
+);
+
+const careerEntries = await Promise.all(
+  (
+    await getCollection("careers", ({ data }) => !data.draft)
+  ).map(async (job) => ({
+    title: job.data.title,
+    description: job.data.description,
+    slug: job.slug,
+    url: `/careers/${job.slug}/`,
+    type: "career",
   }))
 );
 
@@ -118,9 +140,11 @@ const staticPages = [
 
 const allContent = [
   ...posts,
+  ...initiativeEntries,
   ...peopleEntries,
   ...sessions,
   ...sponsors,
+  ...careerEntries,
   ...staticPages,
 ];
 ---
@@ -244,9 +268,11 @@ const allContent = [
       // Define type labels
       const typeLabels = {
         insight: "Insights",
+        initiative: "Initiatives",
         person: "People",
         session: "Sessions",
         sponsor: "Sponsors",
+        career: "Careers",
         page: "Pages",
       };
 

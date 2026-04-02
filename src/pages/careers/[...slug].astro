@@ -1,0 +1,78 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { getCollection } from "astro:content";
+
+const employmentLabels: Record<string, string> = {
+  "full-time": "Full-time",
+  "part-time": "Part-time",
+  contract: "Contract",
+  internship: "Internship",
+};
+
+export async function getStaticPaths() {
+  const entries = await getCollection("careers", ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, department, location, employmentType, postedDate, description } =
+  entry.data;
+const typeLabel = employmentLabels[employmentType] || employmentType;
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-32">
+      <nav class="text-xs uppercase font-medium text-accent-500 mb-8">
+        <a href="/careers/" class="hover:text-gold-600 transition-colors"
+          >Careers</a
+        >
+        <span class="mx-2 text-base-400" aria-hidden="true">/</span>
+        <span class="text-accent-600">{title}</span>
+      </nav>
+      <header class="max-w-3xl space-y-4">
+        <Text
+          tag="p"
+          variant="textXS"
+          class="uppercase text-base-600 text-balance"
+        >
+          {department} · {typeLabel} · {location}
+        </Text>
+        <Text
+          tag="h1"
+          variant="displayMD"
+          class="text-balance text-accent-500 font-display uppercase leading-tight"
+        >
+          {title}
+        </Text>
+        <Text tag="p" variant="textBase" class="text-base-600 font-medium">
+          {description}
+        </Text>
+        <Text tag="p" variant="textSM" class="text-base-500">
+          Posted{" "}
+          {postedDate.toLocaleDateString("en-CA", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </Text>
+      </header>
+      <div class="mt-10 flex flex-wrap gap-2">
+        <Button size="sm" variant="accent" href="mailto:careers@novaroma.org">
+          Apply by email
+        </Button>
+        <Button size="sm" variant="outline" href="/careers/">All openings</Button>
+      </div>
+      <Wrapper variant="prose" class="mt-12">
+        <Content />
+      </Wrapper>
+    </Wrapper>
+  </section>
+</BaseLayout>

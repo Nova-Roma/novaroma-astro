@@ -1,0 +1,64 @@
+{
+  "$ref": "#/definitions/careers",
+  "definitions": {
+    "careers": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "employmentType": {
+          "type": "string",
+          "enum": [
+            "full-time",
+            "part-time",
+            "contract",
+            "internship"
+          ]
+        },
+        "postedDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "draft": {
+          "type": "boolean",
+          "default": false
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "department",
+        "location",
+        "employmentType",
+        "postedDate",
+        "description"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

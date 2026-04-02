@@ -1,0 +1,61 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import BlogEntry from "@/components/blog/BlogEntry.astro";
+// Content
+import { getCollection } from "astro:content";
+const allInitiatives = await getCollection("initiatives");
+allInitiatives.sort(
+  (a, b) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+const TOTAL_COUNT = allInitiatives.length;
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-32">
+      <header class="max-w-4xl space-y-4">
+        <Text
+          tag="h1"
+          variant="displayMD"
+          class="text-balance text-accent-500 font-display uppercase leading-tight"
+        >
+          Initiatives
+        </Text>
+        <Text
+          tag="p"
+          variant="textBase"
+          class="text-accent-600 font-medium max-w-2xl mt-2 text-balance"
+        >
+          Major works undertaken by the Nova Roma team and partners.
+        </Text>
+      </header>
+      {
+        TOTAL_COUNT === 0 && (
+          <Text tag="p" variant="textBase" class="text-base-600 mt-12 max-w-2xl">
+            Initiative articles will appear here as programmes are published.
+          </Text>
+        )
+      }
+      {
+        allInitiatives.length > 0 && (
+          <div
+            class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-5"
+          >
+            {allInitiatives.map((post) => (
+              <BlogEntry
+                post={post}
+                postHrefPrefix="/initiatives"
+                compact
+              />
+            ))}
+          </div>
+        )
+      }
+    </Wrapper>
+  </section>
+</BaseLayout>
