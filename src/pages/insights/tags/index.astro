@@ -8,7 +8,10 @@ const allPosts = await getCollection("insights");
 const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle="Insight tags"
+  description="Browse insights by topic and tag."
+>
   <section>
     <Wrapper variant="standard" class="py-32">
       <div>

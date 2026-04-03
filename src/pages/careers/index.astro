@@ -21,7 +21,10 @@ const jobs = (await getCollection("careers", ({ data }) => !data.draft)).sort(
 const totalOpen = jobs.length;
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle="Careers"
+  description="Open roles and opportunities to work with Nova Roma."
+>
   <section>
     <Wrapper variant="standard" class="py-32">
       <div>

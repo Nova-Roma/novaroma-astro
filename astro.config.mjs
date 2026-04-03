@@ -10,6 +10,8 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    /** Serves `src/public` at site root (e.g. `/images/logo.png`). */
+    publicDir: "src/public",
   },
   markdown: {
     drafts: true,

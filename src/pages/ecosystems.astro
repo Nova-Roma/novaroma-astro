@@ -10,7 +10,10 @@ const entities = (await getCollection("entities"))
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle="Ecosystems"
+  description="Innovation ecosystems and communities connected to Nova Roma."
+>
   <section>
     <Wrapper variant="standard" class="py-32">
       <div class="max-w-3xl space-y-6">

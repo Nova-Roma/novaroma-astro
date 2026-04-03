@@ -1,4 +1,5 @@
 ---
+import { contentImageToOgUrl, defaultShareImageUrl } from "@/lib/ogImage";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import Text from "@/components/fundations/elements/Text.astro";
@@ -73,9 +74,27 @@ const hasAnySocial = presenters.some((presenter) =>
   SOCIAL_LABELS.some(({ key }) => presenter.socials?.[key])
 );
 const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags : [];
+
+let shareImageUrl = await defaultShareImageUrl(Astro.site);
+let shareImageAlt = frontmatter.title;
+const presenterWithHeadshot = presenters.find((p) => p.headshot?.url);
+if (presenterWithHeadshot?.headshot?.url) {
+  shareImageUrl = await contentImageToOgUrl(
+    Astro.site,
+    presenterWithHeadshot.headshot.url,
+    800
+  );
+  shareImageAlt =
+    presenterWithHeadshot.headshot.alt || presenterWithHeadshot.name;
+}
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle={frontmatter.title}
+  description={frontmatter.abstract}
+  imageUrl={shareImageUrl}
+  imageAlt={shareImageAlt}
+>
   <section>
     <Wrapper variant="standard" class="py-32">
       <div class="grid grid-cols-1 lg:grid-cols-12 items-start">

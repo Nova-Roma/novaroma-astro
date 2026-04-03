@@ -28,7 +28,7 @@ const { title, department, location, employmentType, postedDate, description } =
 const typeLabel = employmentLabels[employmentType] || employmentType;
 ---
 
-<BaseLayout>
+<BaseLayout pageTitle={title} description={description}>
   <section>
     <Wrapper variant="standard" class="py-32">
       <nav class="text-xs uppercase font-medium text-accent-500 mb-8">

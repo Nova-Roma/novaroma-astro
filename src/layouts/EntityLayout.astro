@@ -1,4 +1,5 @@
 ---
+import { contentImageToOgUrl } from "@/lib/ogImage";
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
@@ -36,9 +37,21 @@ const sortedOtherEntities = otherEntities
   .slice(0, 6);
 const externalUrl = frontmatter.url;
 const hasExternalLink = externalUrl && externalUrl !== "#_";
+const shareImageUrl = await contentImageToOgUrl(
+  Astro.site,
+  frontmatter.logo.url
+);
+const seoDescription =
+  frontmatter.description?.trim() ||
+  `${frontmatter.name} — ${tierLabel} partner with Nova Roma`;
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle={frontmatter.name}
+  description={seoDescription}
+  imageUrl={shareImageUrl}
+  imageAlt={frontmatter.logo.alt || frontmatter.name}
+>
   <section>
     <Wrapper variant="standard" class="py-32">
       <div class="grid grid-cols-1 lg:grid-cols-12 items-start">

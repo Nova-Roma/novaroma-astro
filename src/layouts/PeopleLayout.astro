@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { contentImageToOgUrl, defaultShareImageUrl } from "@/lib/ogImage";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import Text from "@/components/fundations/elements/Text.astro";
@@ -60,9 +61,29 @@ const combinedRelated = [
       !relatedSessionsFromTalks.some((other) => other.slug === session.slug)
   ),
 ];
+
+let shareImageUrl = await defaultShareImageUrl(Astro.site);
+let shareImageAlt = frontmatter.name;
+if (frontmatter.headshot?.url) {
+  shareImageUrl = await contentImageToOgUrl(
+    Astro.site,
+    frontmatter.headshot.url,
+    800
+  );
+  shareImageAlt = frontmatter.headshot.alt || frontmatter.name;
+}
+const seoDescription =
+  frontmatter.summary?.trim() ||
+  (roleLine ? `${frontmatter.name} — ${roleLine}` : `${frontmatter.name} — Nova Roma`);
 ---
 
-<BaseLayout>
+
+<BaseLayout
+  pageTitle={frontmatter.name}
+  description={seoDescription}
+  imageUrl={shareImageUrl}
+  imageAlt={shareImageAlt}
+>
   <section>
     <Wrapper variant="standard" class="py-32">
       <div class="grid grid-cols-1 lg:grid-cols-12 items-start">

@@ -1,65 +1,71 @@
 ---
 import { AstroSeo } from "@astrolib/seo";
+import { DEFAULT_DESCRIPTION, SITE_NAME } from "@/lib/site";
+import type { PageArticleMeta } from "@/lib/seoTypes";
+
+interface Props {
+  /** Full string for `<title>` (e.g. "About | Nova Roma"). */
+  title: string;
+  /** Short headline for Open Graph / Twitter (e.g. "About"). */
+  ogTitle: string;
+  description?: string;
+  canonical: string;
+  /** Absolute URL for og:image / twitter:image */
+  imageUrl: string;
+  imageAlt?: string;
+  ogType?: "website" | "article";
+  article?: PageArticleMeta;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  ogTitle,
+  description = DEFAULT_DESCRIPTION,
+  canonical,
+  imageUrl,
+  imageAlt = SITE_NAME,
+  ogType = "website",
+  article,
+  noindex = false,
+} = Astro.props;
+
+const desc = description.trim() || DEFAULT_DESCRIPTION;
 ---
 
 <AstroSeo
-  title="Nova Roma"
-  description="A Canadian non-profit bridging legacy institutions and an AI-native future through governance, education, and industry."
-  canonical="https://novaromahorizon.org"
+  title={title}
+  description={desc}
+  canonical={canonical}
+  noindex={noindex}
+  nofollow={false}
   openGraph={{
-    url: "https://novaromahorizon.org",
-    title: "Nova Roma",
-    description:
-      "A Canadian non-profit bridging legacy institutions and an AI-native future through governance, education, and industry.",
+    url: canonical,
+    title: ogTitle,
+    description: desc,
+    site_name: SITE_NAME,
+    type: ogType,
+    locale: "en_US",
     images: [
       {
-        url: "https://novaromahorizon.org/og-image.jpg",
+        url: imageUrl,
         width: 1200,
         height: 630,
-        alt: "Nova Roma",
-        type: "image/jpeg",
+        alt: imageAlt,
       },
     ],
-    site_name: "Nova Roma",
-    type: "website",
-    locale: "en_US",
+    article: ogType === "article" ? article : undefined,
   }}
   twitter={{
     handle: "@novaroma",
     site: "@novaroma",
     cardType: "summary_large_image",
   }}
+  additionalMetaTags={[
+    { name: "twitter:url", content: canonical },
+    { name: "twitter:title", content: ogTitle },
+    { name: "twitter:description", content: desc },
+    { name: "twitter:image", content: imageUrl },
+    { name: "twitter:image:alt", content: imageAlt },
+  ]}
 />
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://novaromahorizon.org/" />
-<meta property="og:title" content="Nova Roma" />
-<meta
-  property="og:description"
-  content="A Canadian non-profit bridging legacy institutions and an AI-native future."
-/>
-<meta
-  property="og:image"
-  content="https://novaromahorizon.org/og-image.jpg"
-/>
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://novaromahorizon.org/" />
-<meta property="twitter:title" content="Nova Roma" />
-<meta
-  property="twitter:description"
-  content="A Canadian non-profit bridging legacy institutions and an AI-native future."
-/>
-<meta
-  property="twitter:image"
-  content="https://novaromahorizon.org/og-image.jpg"
-/>
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://novaromahorizon.org/" />
-
-<!-- Additional SEO -->
-<meta name="robots" content="index, follow" />
-<meta name="googlebot" content="index, follow" />

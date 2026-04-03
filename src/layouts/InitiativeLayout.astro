@@ -1,6 +1,7 @@
 ---
 // Assets
 import { Image } from "astro:assets";
+import { contentImageToOgUrl } from "@/lib/ogImage";
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
@@ -17,9 +18,29 @@ const formattedDate = formatCalendarDate(publishedAt, "en-US", {
 });
 const tags = Array.isArray(frontmatter.tags) ? frontmatter.tags : [];
 const author = frontmatter.author || "Nova Roma";
+const publishedTime = (
+  frontmatter.pubDate instanceof Date
+    ? frontmatter.pubDate
+    : new Date(frontmatter.pubDate)
+).toISOString();
+const shareImageUrl = await contentImageToOgUrl(
+  Astro.site,
+  frontmatter.image.url
+);
 ---
 
-<BaseLayout>
+
+<BaseLayout
+  pageTitle={frontmatter.title}
+  description={frontmatter.description}
+  imageUrl={shareImageUrl}
+  imageAlt={frontmatter.image.alt || frontmatter.title}
+  ogType="article"
+  article={{
+    publishedTime,
+    tags,
+  }}
+>
   <section>
     <Wrapper variant="standard" class="py-32">
       <div class="grid grid-cols-1 lg:grid-cols-12 items-end">

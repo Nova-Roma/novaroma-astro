@@ -32,7 +32,10 @@ const sortedPosts = posts
   );
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle={`Insights: ${tag}`}
+  description={`Insights and articles tagged “${tag}” from Nova Roma.`}
+>
   <section>
     <Wrapper variant="standard" class="py-32">
       <Text
