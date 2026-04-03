@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 // Content
+import type { CollectionEntry } from "astro:content";
 const { getEntry } = await import("astro:content");
 const session = Astro.props.session;
 const { title, abstract, start, end, room, people } = session.data;
@@ -19,9 +20,9 @@ const time = (() => {
   return `${startDate.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })} - ${endDate.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}`;
 })();
 // Fetch speaker data (assume only one speaker for now)
-let speakerData: any = undefined;
+let speakerData: CollectionEntry<"people"> | undefined;
 if (people && people.length > 0) {
-  speakerData = await getEntry("people", people[0]);
+  speakerData = (await getEntry("people", people[0])) ?? undefined;
 }
 ---
 
@@ -29,13 +30,22 @@ if (people && people.length > 0) {
   <a href={url} title={title} class="absolute inset-0 z-20" aria-label={title}
   ></a>
   <div class="relative w-full">
-    <Image
-      src={speakerData.data.headshot.url}
-      alt={speakerData.data.headshot.alt || speakerData.data.name}
-      width={800}
-      height={800}
-      class="aspect-square object-cover object-center w-full grayscale relative"
-    />
+    {
+      speakerData ? (
+        <Image
+          src={speakerData.data.headshot.url}
+          alt={speakerData.data.headshot.alt || speakerData.data.name}
+          width={800}
+          height={800}
+          class="aspect-square object-cover object-center w-full grayscale relative"
+        />
+      ) : (
+        <div
+          class="aspect-square w-full bg-accent-700 grayscale relative"
+          aria-hidden="true"
+        />
+      )
+    }
     <div class="grid grid-cols-12 absolute bottom-0 w-full">
       <div
         class="p-2 aspect-square bg-accent-500 group-hover:bg-accent-900 duration-300 lg:col-start-8 flex"

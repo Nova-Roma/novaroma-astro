@@ -1,7 +1,7 @@
 ---
 title: Designing with Grids
 abstract: Explore the power of grid systems in creating balanced, readable layouts for the web.
-people: ["emil-steiner"]
+people: ["james-cheng"]
 day: day-1
 start: "2025-11-10T11:00:00+03:00"
 end: "2025-11-10T11:40:00+03:00"

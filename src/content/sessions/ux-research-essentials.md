@@ -1,7 +1,7 @@
 ---
 title: UX Research Essentials
 abstract: Discover the tools and methods for effective user research.
-people: ["emil-steiner"]
+people: ["james-cheng"]
 day: day-7
 start: "2025-11-16T10:00:00+03:00"
 end: "2025-11-16T10:40:00+03:00"

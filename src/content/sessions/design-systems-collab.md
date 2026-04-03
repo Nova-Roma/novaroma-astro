@@ -1,7 +1,7 @@
 ---
 title: Design Systems Collab
 abstract: How designers and developers can build better systems together.
-people: ["javier-garcia"]
+people: ["francis-wang"]
 day: day-6
 start: "2025-11-15T10:00:00+03:00"
 end: "2025-11-15T10:40:00+03:00"

@@ -73,7 +73,7 @@ const seoDescription =
         <div
           class="flex flex-col justify-center lg:col-span-4 lg:col-start-9 lg:sticky lg:top-32"
         >
-          <div class="bg-accent-500 p-8">
+          <div class="flex min-h-32 w-full items-center justify-center bg-accent-500 p-8">
             {
               frontmatter.logo?.url ? (
                 <Image
@@ -81,7 +81,7 @@ const seoDescription =
                   alt={frontmatter.logo.alt || frontmatter.name}
                   width={320}
                   height={200}
-                  class="h-24 w-auto object-contain"
+                  class="h-24 w-auto max-w-full object-contain"
                   loading="lazy"
                 />
               ) : (

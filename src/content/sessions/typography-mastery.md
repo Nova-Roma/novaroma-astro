@@ -1,7 +1,7 @@
 ---
 title: Typography Mastery
 abstract: Unlock the secrets of type for digital and print design.
-people: ["anna-muller"]
+people: ["francis-wang"]
 day: day-3
 start: "2025-11-12T10:00:00+03:00"
 end: "2025-11-12T10:40:00+03:00"

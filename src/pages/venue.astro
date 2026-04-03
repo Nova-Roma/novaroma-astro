@@ -1,7 +1,6 @@
 ---
 // Assets
 import { Image } from "astro:assets";
-import venue from "@/images/assets/venue.jpg";
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
@@ -72,14 +71,6 @@ const nearbyStays = [
       <section>
         <div class="grid lg:grid-cols-12 mt-12">
           <div class="lg:col-span-6">
-            <Image
-              src={venue}
-              alt="Venue"
-              width={1200}
-              height={800}
-              loading="eager"
-              decoding="async"
-            />
           </div>
           <aside class="flex flex-col gap-8 lg:col-span-5 lg:col-start-8">
             <div class="space-y-3">

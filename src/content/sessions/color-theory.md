@@ -1,7 +1,7 @@
 ---
 title: Color Theory in Practice
 abstract: Learn how to use color to create mood, hierarchy, and accessibility.
-people: ["sofia-hagblom"]
+people: ["james-cheng"]
 day: day-4
 start: "2025-11-13T10:00:00+03:00"
 end: "2025-11-13T10:40:00+03:00"

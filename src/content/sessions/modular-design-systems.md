@@ -1,7 +1,7 @@
 ---
 title: Modular Design Systems
 abstract: How modularity and proportion drive scalable, maintainable design systems.
-people: ["anna-muller"]
+people: ["francis-wang"]
 day: day-1
 start: "2025-11-10T10:00:00+03:00"
 end: "2025-11-10T10:40:00+03:00"

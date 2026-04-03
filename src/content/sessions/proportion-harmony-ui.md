@@ -1,7 +1,7 @@
 ---
 title: Proportion & Harmony in UI
 abstract: Master the use of proportion and harmony to create visually pleasing and effective interfaces.
-people: ["martina-rossi"]
+people: ["james-cheng"]
 day: day-2
 start: "2025-11-11T11:00:00+03:00"
 end: "2025-11-11T11:40:00+03:00"

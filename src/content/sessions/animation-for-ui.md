@@ -1,7 +1,7 @@
 ---
 title: Animation for UI
 abstract: Bring interfaces to life with meaningful motion.
-people: ["miguel-santos"]
+people: ["james-cheng"]
 day: day-5
 start: "2025-11-14T10:00:00+03:00"
 end: "2025-11-14T10:40:00+03:00"
