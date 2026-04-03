@@ -1,7 +1,7 @@
 ---
 title: "Capturing Waynism"
-pubDate: 2025-12-05
-description: A memorial programme collecting unfinished works and alumni memories from Wayne Chang’s lectures, and advancing research in work-integrated learning inside innovation practice.
+pubDate: 2025-09-06
+description: A memorial project collecting unfinished works and alumni memories from Wayne Chang’s lectures, and advancing research in work-integrated learning inside innovation practice.
 image:
   url: "/src/images/initiatives/capturing-waynism.png"
   alt: Lecture notes and photographs arranged on a studio table

@@ -1,6 +1,6 @@
 ---
 title: "The Living Archive"
-pubDate: 2026-04-02
+pubDate: 2026-03-19
 description: Cross-generation collaboration that preserves context, enables knowledge succession, and sparks awe for young people entering complex organizations.
 image:
   url: "/src/images/initiatives/institutional-memory.png"

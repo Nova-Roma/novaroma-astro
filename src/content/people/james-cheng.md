@@ -5,39 +5,50 @@ company: Nova Roma Horizon
 headshot:
   url: /src/images/people/james-cheng.jpg
   alt: James Cheng headshot
-location: Toronto, Canada
-summary: "Creative director bringing Swiss rationalism to contemporary design systems and team culture."
+location: Waterloo, Canada
+summary: "Software consultant, entrepreneur, and ecosystem builder supporting AI-first entrepreneurship."
 tags:
-  - typography
-  - design systems
-  - mentorship
+  - artificial intelligence
+  - entrepreneurship
+  - venture development
+  - ecosystem building
+  - work-integrated learning
 socials:
-  twitter: "#_"
-  github: "#_"
-  linkedin: "#_"
-  website: "#_"
+  linkedin: "https://www.linkedin.com/in/zycheng/"
 talks: []
 featured: false
 ---
 
-## About Emil
+## About
 
-Emil Steiner is a creative director at Ratio Studio, where he leads teams in crafting balanced, clear, and innovative design systems inspired by Swiss tradition. Emil’s career spans branding, digital product design, and creative leadership for both startups and established brands. He is known for his ability to distill complex ideas into simple, elegant solutions and for fostering a studio culture of experimentation and growth. Emil frequently lectures on the value of design systems and the enduring influence of Swiss design on global visual culture.
+James Cheng is a software consultant, entrepreneur, and ecosystem builder with a decade of experience leading digital transformation across aviation, finance, healthcare, and the public sector. He has returned to Canada to contribute to the Waterloo ecosystem, supporting AI-first entrepreneurship through work-integrated learning, community building, and venture development.
 
-## Topics
+At Waterloo, he studied Systems Design Engineering and began exploring venture creation through the Velocity Residence. After graduating in 2014, he joined Pivotal Labs in Toronto before relocating to Singapore in 2017, where he continued through the VMware acquisition and developed a track record delivering workshops and speaking at SUTD and Taiwan DDD. He returned to Canada in 2025.
 
-- Design systems
-- Swiss design tradition
-- Creative leadership
+## Current work
 
-## Fun Fact
+His current work spans three areas:
 
-Emil is a jazz pianist and believes improvisation is key to creative problem-solving.
+**Venture Development and Applied Learning**
 
-## Presentation Outline
+Supporting students and early-stage founders in building ventures under real conditions, with a focus on AI-first thinking and applied problem solving.
 
-- The Swiss approach to design systems
-- Simplicity as a design strategy
-- Leading creative teams for innovation
-- Case study: Building a scalable design system
-- Q&A: Applying Swiss principles in your workflow
+**Community and Ecosystem Building**
+
+Connecting founders, students, and operators across education and industry to build the collaborative infrastructure that sustains regional innovation.
+
+**AI-First Enterprises**
+
+Helping organisations and ventures translate AI capabilities into deployable systems, from workflow redesign to automation in traditional industries.
+
+## Education
+
+- BASc, Systems Design Engineering, University of Waterloo, 2014
+- Exchange, TU Braunschweig, Germany, 2012
+- MBET, University of Waterloo, 2026
+
+## Experience
+
+- Pivotal Labs and VMware, Software Engineer to Staff Software Engineer, Toronto and Singapore, 2014–2024
+- Teaching Assistant, Enterprise Co-op, University of Waterloo, 2025–present
+- Co-founder, Divotron, 2025–present

@@ -1,14 +1,13 @@
 ---
-title: "Innovation Ecosystem Mapping"
-pubDate: 2026-04-01
-description: Projects that chart resources, actors, and flows across innovation ecosystems—plus a board-game deck to teach ecosystem literacy and spark networking.
+title: "Ecosystem Mapping"
+pubDate: 2026-03-09
+description: Mapping resources, actors, and flows between them within innovation ecosystems, plus a game deck to teach ecosystem literacy and spark networking.
 image:
   url: "/src/images/initiatives/ecosystem-mapping.png"
   alt: Facilitators arranging cards and maps on a workshop table
 tags:
-  - ecosystems
-  - education
-  - mapping
+  - innovation ecosystems
+  - networking
 draft: true
 ---
 

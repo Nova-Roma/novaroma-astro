@@ -1,7 +1,7 @@
 ---
 title: "Innovation Sanctuary"
-pubDate: 2026-02-01
-description: A protected space for mid-career professionals to prototype ideas, find collaborators, and ship small bets before scaling.
+pubDate: 2025-11-28
+description: A protected space for career innovators, founder, and entrepreneurs to prototype ideas, find collaborators, and ship small bets before scaling.
 image:
   url: "/src/images/initiatives/innovation-sanctuary.png"
   alt: Open studio with sketches and prototypes on tables

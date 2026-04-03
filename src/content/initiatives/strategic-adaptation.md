@@ -1,7 +1,7 @@
 ---
-title: "Strategic Adaptation for Institutions"
-pubDate: 2025-11-20
-description: Governance and operations reviews that map legacy systems to an AI-augmented operating model—without boiling the ocean.
+title: "Crossing the Chasm RX"
+pubDate: 2026-03-15
+description: Helping mainstream institutions adopt emerging technologies that have gained traction and update their processes and people to adapt.
 image:
   url: "/src/images/initiatives/crossing-the-chasm.png"
   alt: Facilitators mapping services on a whiteboard

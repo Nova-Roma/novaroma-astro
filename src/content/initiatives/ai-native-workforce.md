@@ -1,20 +1,19 @@
 ---
 title: "AI-Native Workforce"
-pubDate: 2026-01-15
-description: Residency-style training that pairs practitioners with mentors so teams adopt AI tools without losing craft or judgment.
+pubDate: 2025-05-29
+description: A work-integrated learning model that bridges post-secondary training and emerging technology adoption through problem research, process mapping, and agentic system design.
 image:
   url: "/src/images/initiatives/ai-ready-workforce.png"
   alt: Workshop participants collaborating at laptops
 tags:
-  - workforce
-  - education
-  - ai
+  - Future of Work
+  - Agentic AI
 featured: true
 draft: true
 ---
 
-Nova Roma’s AI-native workforce programme meets organizations where they are: some need literacy sprints, others need embedded coaching alongside delivery. We combine structured curricula with live projects so skills transfer sticks.
+This study proposes a work-integrated learning (WIL) model designed to bridge the gap between post-secondary training and the adoption of emerging technologies in mainstream organizations. By focusing on AI-native workforce capabilities, this model transforms organizational workflows for the agentic era while developing student competencies for the future of work. We identify three core competencies required in 2026: problem research, process mapping, and agentic system design and deployment.
 
-Cohorts rotate through foundations—prompting, evaluation, safety, and workflow design—then apply them to real briefs from partner institutions. Mentors from the network model how to critique outputs, document decisions, and escalate when automation is the wrong tool.
+Problem research trains students to critically examine the validity and scope of organizational challenges through structured inquiry and stakeholder engagement. Process mapping then translates these insights into documented workflows using methods such as event storming and process mining to reveal data flows, decision points, and operational bottlenecks. These two competencies are the basis for agentic system design, in which students create prototypes of human–AI hybrid workflows that automate or improve business processes.
 
-Partners retain ownership of their roadmaps; we supply the practice field, the peer network, and the quality bar. Applications open on a rolling basis aligned with fiscal-year planning cycles.
+This model provides a scalable approach for organizations to research and prototype agentifying business processes without significant structural shift. Through this model, higher education can also meet the demands of a rapidly evolving technological landscape, ensuring that the next generation of professionals develop AI-native capabilities.

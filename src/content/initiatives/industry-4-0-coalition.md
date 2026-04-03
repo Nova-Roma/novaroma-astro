@@ -1,6 +1,6 @@
 ---
 title: "Industry 4.0 Coalition"
-pubDate: 2026-02-20
+pubDate: 2026-03-17
 description: A multinational partnership for portable credentials and workforce training on Industry 4.0—building societal resilience through long-term vertical integration and economic sovereignty.
 image:
   url: "/src/images/initiatives/industry-4-0.png"
