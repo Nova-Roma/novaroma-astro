@@ -4,6 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
+  server: { port: 4322 },
   redirects: {
     "/sponsors": "/entities",
     "/sponsors/details/[...slug]": "/entities/details/[...slug]",

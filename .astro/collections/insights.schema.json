@@ -48,6 +48,17 @@
             "type": "string"
           }
         },
+        "canonical_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "cross_posted": {
+          "type": "boolean",
+          "default": false
+        },
+        "source_author": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         }

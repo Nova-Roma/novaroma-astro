@@ -1,4 +1,23 @@
 import { defineCollection, z } from "astro:content";
+
+const challenges = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    pubDate: z.date(),
+    description: z.string(),
+    tags: z.array(z.string()).default([]),
+    track: z.enum(["people", "planet", "prosperity", "university"]).optional(),
+    sdgs: z.array(z.number()).default([]),
+    canonical_url: z.string().url().optional(),
+    cross_posted: z.boolean().default(false),
+    source_author: z.string().optional(),
+    domain_theme: z.string().optional(),
+    parent_questions: z.array(z.string()).default([]),
+    partner_orgs: z.array(z.string()).default([]),
+  }),
+});
+
 const infopages = defineCollection({
   schema: z.object({
     page: z.string(),
@@ -17,6 +36,10 @@ const insights = defineCollection({
         alt: z.string(),
       }),
       tags: z.array(z.string()),
+      // Cross-post support (see 00_Protocol/Playbooks/content-publishing.md)
+      canonical_url: z.string().url().optional(),   // Set when this is a mirror of findcongwang.com content
+      cross_posted: z.boolean().default(false),     // True = exact mirror; false = original or retelling
+      source_author: z.string().optional(),         // Original author for cross-posts
     }),
 });
 
@@ -140,4 +163,5 @@ export const collections = {
   sessions: session,
   entities: entity,
   careers,
+  challenges,
 };

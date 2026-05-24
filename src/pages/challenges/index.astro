@@ -1,0 +1,119 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { getCollection } from "astro:content";
+
+const SDG_COLORS: Record<number, { bg: string; label: string }> = {
+  1: { bg: "#E5243B", label: "No Poverty" },
+  2: { bg: "#DDA63A", label: "Zero Hunger" },
+  3: { bg: "#4C9F38", label: "Good Health" },
+  4: { bg: "#C5192D", label: "Quality Education" },
+  5: { bg: "#FF3A21", label: "Gender Equality" },
+  6: { bg: "#26BDE2", label: "Clean Water" },
+  7: { bg: "#FCC30B", label: "Clean Energy" },
+  8: { bg: "#A21942", label: "Decent Work" },
+  9: { bg: "#FD6925", label: "Innovation" },
+  10: { bg: "#DD1367", label: "Reduced Inequalities" },
+  11: { bg: "#FD9D24", label: "Sustainable Cities" },
+  12: { bg: "#BF8B2E", label: "Responsible Consumption" },
+  13: { bg: "#3F7E44", label: "Climate Action" },
+  14: { bg: "#0A97D9", label: "Life Below Water" },
+  15: { bg: "#56C02B", label: "Life on Land" },
+  16: { bg: "#00689D", label: "Peace & Justice" },
+  17: { bg: "#19486A", label: "Partnerships" },
+};
+
+const TRACK_STYLES: Record<string, string> = {
+  people: "bg-accent-500 text-white",
+  planet: "bg-green-700 text-white",
+  prosperity: "bg-amber-600 text-white",
+  university: "bg-base-700 text-white",
+};
+
+const challenges = (await getCollection("challenges")).sort(
+  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+---
+
+<BaseLayout pageTitle="Innovation Challenges" description="Open innovation challenges seeking diverse solutions to complex problems.">
+  <section>
+    <Wrapper variant="standard" class="py-32">
+      <div>
+        <Text tag="p" variant="textXS" class="uppercase text-base-600">
+          Cooperathon 2026
+        </Text>
+        <Text
+          tag="h1"
+          variant="displayMD"
+          class="text-balance text-accent-500 font-display uppercase leading-tight mt-8"
+        >
+          Innovation Challenges
+        </Text>
+        <Text
+          tag="p"
+          variant="textBase"
+          class="text-base-600 font-medium max-w-2xl mt-2 text-balance"
+        >
+          Open problem specifications backed by deep research. Join our coalition or attempt the challenge your own way.
+        </Text>
+      </div>
+
+      <div class="mt-12 space-y-6">
+        {challenges.map((challenge) => (
+          <a href={`/challenges/${challenge.slug}/`} class="block border border-dashed border-black/15 bg-base-100 p-6 sm:p-8 hover:bg-accent-50 transition-colors">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="text-[10px] uppercase font-medium px-2 py-0.5 bg-base-900 text-white">
+                Cooperathon 2026
+              </span>
+              {challenge.data.track && (
+                <span class={`text-[10px] uppercase font-medium px-2 py-0.5 ${TRACK_STYLES[challenge.data.track] || "bg-base-200 text-base-700"}`}>
+                  {challenge.data.track}
+                </span>
+              )}
+              {challenge.data.sdgs.map((sdg) => (
+                <span
+                  class="text-[10px] font-medium px-1.5 py-0.5 text-white"
+                  style={`background-color: ${SDG_COLORS[sdg]?.bg || '#666'}`}
+                >
+                  SDG {sdg}
+                </span>
+              ))}
+            </div>
+            <span class="block font-medium text-accent-600 text-lg">
+              {challenge.data.title}
+            </span>
+            <span class="block mt-1 text-sm text-base-600 line-clamp-2">
+              {challenge.data.description}
+            </span>
+            {challenge.data.partner_orgs.length > 0 && (
+              <span class="block mt-3 text-xs text-base-500">
+                Coalition: {challenge.data.partner_orgs.join(" · ")}
+              </span>
+            )}
+          </a>
+        ))}
+      </div>
+
+      <section class="gap-x-12 gap-y-8 border border-white/10 bg-accent-500 p-8 md:flex md:items-center md:justify-between mt-24">
+        <div class="max-w-2xl space-y-4">
+          <Text tag="h2" variant="displaySM" class="font-display uppercase text-white">
+            Join a challenge
+          </Text>
+          <Text tag="p" variant="textSM" class="text-base-200 lg:text-balance">
+            Interested in collaborating on one of these challenges? We welcome research partners, technical contributors, and community organisations.
+          </Text>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-2 md:justify-end">
+          <Button size="sm" variant="default" class="w-fit" href="mailto:challenges@novaromahorizon.org">
+            Get in touch
+          </Button>
+          <Button size="sm" variant="muted" class="w-fit" href="/forms/contact">
+            Contact
+          </Button>
+        </div>
+      </section>
+    </Wrapper>
+  </section>
+</BaseLayout>

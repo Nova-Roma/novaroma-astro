@@ -1,0 +1,93 @@
+{
+  "$ref": "#/definitions/challenges",
+  "definitions": {
+    "challenges": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "pubDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "track": {
+          "type": "string",
+          "enum": [
+            "people",
+            "planet",
+            "prosperity",
+            "university"
+          ]
+        },
+        "sdgs": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "default": []
+        },
+        "canonical_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "cross_posted": {
+          "type": "boolean",
+          "default": false
+        },
+        "source_author": {
+          "type": "string"
+        },
+        "domain_theme": {
+          "type": "string"
+        },
+        "parent_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "partner_orgs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "pubDate",
+        "description"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

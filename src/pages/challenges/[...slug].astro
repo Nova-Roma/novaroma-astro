@@ -1,0 +1,141 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { getCollection } from "astro:content";
+
+const SDG_COLORS: Record<number, { bg: string; label: string }> = {
+  1: { bg: "#E5243B", label: "No Poverty" },
+  2: { bg: "#DDA63A", label: "Zero Hunger" },
+  3: { bg: "#4C9F38", label: "Good Health" },
+  4: { bg: "#C5192D", label: "Quality Education" },
+  5: { bg: "#FF3A21", label: "Gender Equality" },
+  6: { bg: "#26BDE2", label: "Clean Water" },
+  7: { bg: "#FCC30B", label: "Clean Energy" },
+  8: { bg: "#A21942", label: "Decent Work" },
+  9: { bg: "#FD6925", label: "Innovation" },
+  10: { bg: "#DD1367", label: "Reduced Inequalities" },
+  11: { bg: "#FD9D24", label: "Sustainable Cities" },
+  12: { bg: "#BF8B2E", label: "Responsible Consumption" },
+  13: { bg: "#3F7E44", label: "Climate Action" },
+  14: { bg: "#0A97D9", label: "Life Below Water" },
+  15: { bg: "#56C02B", label: "Life on Land" },
+  16: { bg: "#00689D", label: "Peace & Justice" },
+  17: { bg: "#19486A", label: "Partnerships" },
+};
+
+const TRACK_STYLES: Record<string, string> = {
+  people: "bg-accent-500 text-white",
+  planet: "bg-green-700 text-white",
+  prosperity: "bg-amber-600 text-white",
+  university: "bg-base-700 text-white",
+};
+
+export async function getStaticPaths() {
+  const entries = await getCollection("challenges");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, description, track, sdgs, canonical_url, source_author, partner_orgs, domain_theme } = entry.data;
+---
+
+<BaseLayout pageTitle={title} description={description}>
+  <section>
+    <Wrapper variant="standard" class="py-32">
+      <nav class="text-xs uppercase font-medium text-accent-500 mb-8">
+        <a href="/challenges/" class="hover:text-gold-600 transition-colors">Challenges</a>
+        <span class="mx-2 text-base-400" aria-hidden="true">/</span>
+        <span class="text-accent-600">{title}</span>
+      </nav>
+
+      <header class="max-w-3xl space-y-4">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="text-[10px] uppercase font-medium px-2 py-0.5 bg-base-900 text-white">
+            Cooperathon 2026
+          </span>
+          {track && (
+            <span class={`text-[10px] uppercase font-medium px-2 py-0.5 ${TRACK_STYLES[track] || "bg-base-200 text-base-700"}`}>
+              {track} track
+            </span>
+          )}
+          {sdgs.map((sdg) => (
+            <span
+              class="text-[10px] font-medium px-1.5 py-0.5 text-white"
+              style={`background-color: ${SDG_COLORS[sdg]?.bg || '#666'}`}
+            >
+              SDG {sdg}: {SDG_COLORS[sdg]?.label || ''}
+            </span>
+          ))}
+        </div>
+
+        {domain_theme && (
+          <Text tag="p" variant="textXS" class="uppercase text-base-600">
+            {domain_theme}
+          </Text>
+        )}
+
+        <Text
+          tag="h1"
+          variant="displayMD"
+          class="text-balance text-accent-500 font-display uppercase leading-tight"
+        >
+          {title}
+        </Text>
+
+        <Text tag="p" variant="textBase" class="text-base-600 font-medium">
+          {description}
+        </Text>
+
+        {partner_orgs && partner_orgs.length > 0 && (
+          <Text tag="p" variant="textSM" class="text-base-500">
+            Coalition: {partner_orgs.join(" · ")}
+          </Text>
+        )}
+      </header>
+
+      <Wrapper variant="prose" class="mt-12">
+        <Content />
+      </Wrapper>
+
+      {/* Cross-post attribution footnote */}
+      {canonical_url && (
+        <div class="mt-16 pt-6 border-t border-dashed border-black/10 text-xs text-base-500 max-w-2xl">
+          <p>
+            This challenge was originally published on{" "}
+            <a href={canonical_url} class="text-accent-600 underline hover:text-gold-600" target="_blank" rel="noopener">
+              findcongwang.com
+            </a>
+            {source_author && <> by {source_author}</>}.
+            Research partnership with Nova Roma Horizon Innovation Society.
+          </p>
+        </div>
+      )}
+
+      {/* CTA */}
+      <section class="gap-x-12 gap-y-8 border border-white/10 bg-accent-500 p-8 md:flex md:items-center md:justify-between mt-16">
+        <div class="max-w-2xl space-y-4">
+          <Text tag="h2" variant="displaySM" class="font-display uppercase text-white">
+            Join this challenge
+          </Text>
+          <Text tag="p" variant="textSM" class="text-base-200 lg:text-balance">
+            We welcome diverse approaches. Join our coalition or pursue the challenge independently.
+          </Text>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-2 md:justify-end">
+          <Button size="sm" variant="default" class="w-fit" href="mailto:challenges@novaromahorizon.org">
+            Get in touch
+          </Button>
+          <Button size="sm" variant="muted" class="w-fit" href="/challenges/">
+            All challenges
+          </Button>
+        </div>
+      </section>
+    </Wrapper>
+  </section>
+</BaseLayout>
