@@ -1,0 +1,104 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { getCollection } from "astro:content";
+
+const SDG_COLORS: Record<number, { bg: string; label: string }> = {
+  1: { bg: "#E5243B", label: "No Poverty" },
+  2: { bg: "#DDA63A", label: "Zero Hunger" },
+  3: { bg: "#4C9F38", label: "Good Health" },
+  4: { bg: "#C5192D", label: "Quality Education" },
+  5: { bg: "#FF3A21", label: "Gender Equality" },
+  6: { bg: "#26BDE2", label: "Clean Water" },
+  7: { bg: "#FCC30B", label: "Clean Energy" },
+  8: { bg: "#A21942", label: "Decent Work" },
+  9: { bg: "#FD6925", label: "Innovation" },
+  10: { bg: "#DD1367", label: "Reduced Inequalities" },
+  11: { bg: "#FD9D24", label: "Sustainable Cities" },
+  12: { bg: "#BF8B2E", label: "Responsible Consumption" },
+  13: { bg: "#3F7E44", label: "Climate Action" },
+  14: { bg: "#0A97D9", label: "Life Below Water" },
+  15: { bg: "#56C02B", label: "Life on Land" },
+  16: { bg: "#00689D", label: "Peace & Justice" },
+  17: { bg: "#19486A", label: "Partnerships" },
+};
+
+const TRACK_STYLES: Record<string, string> = {
+  people: "bg-accent-500 text-white",
+  planet: "bg-green-700 text-white",
+  prosperity: "bg-amber-600 text-white",
+  university: "bg-base-700 text-white",
+};
+
+const allChallenges = await getCollection("challenges");
+const byDate = (
+  a: { data: { pubDate: Date } },
+  b: { data: { pubDate: Date } }
+) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+const display = [...allChallenges].sort(byDate).slice(0, 5);
+---
+
+{
+  display.length > 0 && (
+    <section>
+      <Wrapper variant="standard" class="py-24">
+        <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-12">
+          <div class="lg:col-span-6 lg:-mt-4">
+            <Text
+              tag="h2"
+              variant="displayXL"
+              class="font-display uppercase leading-tight text-accent-500"
+            >
+              Innovation Challenges
+            </Text>
+            <Text tag="p" variant="textSM" class="text-base-600 text-balance">
+              Open problem specifications backed by deep research. Join our coalition or attempt the challenge your own way.
+            </Text>
+          </div>
+          <div class="flex flex-col gap-2 lg:col-start-12">
+            <Button href="/challenges" size="sm" variant="outline" class="w-full">
+              See All
+            </Button>
+          </div>
+        </div>
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5">
+          {display.map((challenge) => (
+            <a
+              href={`/challenges/${challenge.slug}/`}
+              class="block border border-dashed border-black/15 bg-base-100 p-5 hover:bg-accent-50 transition-colors"
+            >
+              <div class="flex flex-wrap items-center gap-1.5 mb-3">
+                <span class="text-[10px] uppercase font-medium px-1.5 py-0.5 bg-base-900 text-white">
+                  Cooperathon 2026
+                </span>
+                {challenge.data.track && (
+                  <span class={`text-[10px] uppercase font-medium px-1.5 py-0.5 ${TRACK_STYLES[challenge.data.track] || "bg-base-200 text-base-700"}`}>
+                    {challenge.data.track}
+                  </span>
+                )}
+              </div>
+              <span class="block font-medium text-accent-600 text-sm leading-snug">
+                {challenge.data.title}
+              </span>
+              <span class="block mt-2 text-xs text-base-600 line-clamp-2">
+                {challenge.data.description}
+              </span>
+              <div class="flex flex-wrap gap-1 mt-3">
+                {challenge.data.sdgs.map((sdg) => (
+                  <span
+                    class="text-[9px] font-medium px-1 py-0.5 text-white"
+                    style={`background-color: ${SDG_COLORS[sdg]?.bg || '#666'}`}
+                  >
+                    SDG {sdg}
+                  </span>
+                ))}
+              </div>
+            </a>
+          ))}
+        </div>
+      </Wrapper>
+    </section>
+  )
+}
