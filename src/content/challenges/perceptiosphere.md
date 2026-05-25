@@ -100,10 +100,21 @@ The architecture scales organically across four dimensions:
 
 ## 8. Team Capability
 
-- **Francis Wang**: DBA researcher, knowledge architecture and AI systems, primary architect of Perceptiosphere
-- **Barry Wylant**: DDes supervisor, provides theoretical grounding and Active Library concepts (intentionality, curation, growth rhythms)
-- **Open-Source Community**: Developers, researchers, and practitioners extending the blueprint globally
-- **University Partnerships**: Academic validation, research output, and teaching integration
+**Francis Wang** (Lead Researcher, DBA) — Primary architect of Perceptiosphere. Knowledge architecture and AI systems. DBA researcher at Golden Gate University (GenAI, human-AI collaboration). DDes at University of Calgary.
+
+**Larry Smith** (Academic Advisor) — Professor of Economics, University of Waterloo. Expertise in entrepreneurship, innovation ecosystems, and the economics of technology adoption. Provides academic grounding for knowledge economics and institutional adoption strategy.
+
+**Parth Sharma** (AI & Privacy Engineering) — Computer Science, University of Waterloo. Research in data privacy and AI ethics. Contributes privacy-preserving architecture design and AI agent development for the CORE cycle.
+
+**Arwin Tio** (Distributed Systems) — Senior Software Engineer at Cruise (General Motors), data processing. Previously Staff Software Engineer at NextRoll (Data Products). Expertise in distributed systems, graph databases, and scalable data infrastructure for the knowledge mesh.
+
+**James Cheng** (Platform & Community) — Software consultant and ecosystem builder. Decade of digital transformation experience. Staff Software Engineer (Pivotal Labs/VMware). Teaching Assistant for Enterprise Co-op, University of Waterloo. Leads open-source platform development and community engagement.
+
+**William Yao** (Institutional Strategy) — Founder, Nova Roma. Chartered Accountant, ex-Merrill Lynch. Over 40 years in financial services and corporate innovation. Provides institutional adoption strategy and governance model design.
+
+**Open-Source Community** — Developers, researchers, and practitioners extending the blueprint globally.
+
+**University Partnerships** — Academic validation, research output, and teaching integration.
 
 ## 9. Our Approach
 

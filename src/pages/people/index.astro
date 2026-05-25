@@ -6,12 +6,19 @@ import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
 import SpeakerCard from "@/components/speakers/SpeakerCard.astro";
+import SpeakerCardCompact from "@/components/speakers/SpeakerCardCompact.astro";
 // Content
 import { getCollection } from "astro:content";
 const people = await getCollection("people");
 
-const allPeople = people
-  .filter((person) => !person.data.featured)
+const coreTeam = people
+  .filter((person) => !person.data.featured && person.data.role !== "Community Member" && person.data.role !== "Advisor")
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
+const communityMembers = people
+  .filter((person) => person.data.role === "Community Member")
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
+const advisors = people
+  .filter((person) => person.data.role === "Advisor")
   .sort((a, b) => a.data.name.localeCompare(b.data.name));
 const totalPeople = people.length;
 ---
@@ -57,9 +64,49 @@ const totalPeople = people.length;
           </Text>
         </div>
         <div class="grid sm:grid-cols-2 xl:grid-cols-3 lg:col-span-9 gap-y-12">
-          {allPeople.map((person) => <SpeakerCard speaker={person} />)}
+          {coreTeam.map((person) => <SpeakerCard speaker={person} />)}
         </div>
       </div>
+
+      {communityMembers.length > 0 && (
+        <div class="grid grid-cols-1 mt-24 lg:grid-cols-12">
+          <div class="space-y-2 lg:col-span-3">
+            <Text
+              tag="h2"
+              variant="displaySM"
+              class="font-display uppercase text-accent-500"
+            >
+              Community Members
+            </Text>
+            <Text tag="p" variant="textSM" class="text-base-600 text-balance">
+              Innovation challenge contributors, collaborators, and members of the extended Nova Roma network.
+            </Text>
+          </div>
+          <div class="grid sm:grid-cols-2 xl:grid-cols-3 lg:col-span-9 gap-4">
+            {communityMembers.map((person) => <SpeakerCardCompact speaker={person} />)}
+          </div>
+        </div>
+      )}
+
+      {advisors.length > 0 && (
+        <div class="grid grid-cols-1 mt-24 lg:grid-cols-12">
+          <div class="space-y-2 lg:col-span-3">
+            <Text
+              tag="h2"
+              variant="displaySM"
+              class="font-display uppercase text-accent-500"
+            >
+              Advisors
+            </Text>
+            <Text tag="p" variant="textSM" class="text-base-600 text-balance">
+              Academic supervisors, mentors, and strategic advisors guiding our innovation challenges.
+            </Text>
+          </div>
+          <div class="grid sm:grid-cols-2 xl:grid-cols-3 lg:col-span-9 gap-4">
+            {advisors.map((person) => <SpeakerCardCompact speaker={person} />)}
+          </div>
+        </div>
+      )}
       <section
         class="gap-x-12 gap-y-8 border border-white/10 bg-accent-500 p-8 md:flex md:items-center md:justify-between mt-24"
       >

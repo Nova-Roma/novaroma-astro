@@ -215,35 +215,22 @@ This is not mere repurposing; it is strategic evolution of energy-export economy
 
 Success requires coalition across three domains:
 
-### Energy Infrastructure Expertise
+**Francis Wang** (Lead Researcher) — 15+ years in engineering and product leadership. Dual doctoral research (DDes, DBA) combining AI systems with strategic foresight. Bridges the interdisciplinary gap between energy infrastructure and compute systems.
 
-- Renewables generation and grid interconnection
-- Data centre cooling systems and thermal management
-- Energy storage integration (batteries, thermal storage)
-- Regional grid economics and regulatory frameworks
+**Maria Smirnova** (Systems & Operations) — Architecture graduate, University of Waterloo. President of Iterra Advanced R&D. COO at Infortech Global. Brings systems design thinking, infrastructure operations expertise, and experience scaling technology ventures.
 
-### AI Systems Engineering
+**Arwin Tio** (AI Infrastructure Engineering) — Senior Software Engineer at Cruise (General Motors), data processing for autonomous vehicles. Previously Staff Software Engineer at NextRoll. Expertise in high-performance computing, distributed systems, and GPU fleet optimisation.
 
-- High-performance computing cluster design
-- Distributed computing architectures (Kubernetes, Slurm, Kubernetes on edge)
-- GPU fleet optimisation and power throttling
-- AI workload profiling and scheduling algorithms
+**Alex Li** (Design & User Experience) — Director of Product Design at RBC (AI-powered products). Previously Design Strategist at Capital One, Design Researcher at IBM. Expertise in making complex technical systems accessible to non-specialist users and policy-makers.
 
-### Policy and Regulatory
+**James Cheng** (Platform Engineering & Ecosystem) — Software consultant and ecosystem builder. Decade of digital transformation across aviation, finance, healthcare, and public sector. Staff Software Engineer (Pivotal Labs/VMware). Systems Design Engineering, University of Waterloo.
 
-- Digital sovereignty and data governance frameworks
-- International data flow agreements
-- Energy market regulations for co-location
-- Northern development policy and Indigenous partnership frameworks
+**William Yao** (Finance & Governance) — Founder, Nova Roma. Chartered Accountant, ex-Merrill Lynch. Over 40 years in financial services and corporate innovation. Provides capital markets expertise, energy economics, and Build-to-Manage revenue model design.
 
-### Coordination Channel
+### Coordination
 
 - **Nova Roma:** Partnership and coordination infrastructure
 - **FW.VISION:** Strategic foresight and scenario planning capability
-
-### Personal Qualification Note
-
-The proposer brings 15 years of experience in sustainable and renewable energy systems combined with dual doctorate in artificial intelligence. This bridges the interdisciplinary gap that has historically prevented successful integration of energy and compute infrastructure.
 
 ## Our Approach (Value Proposition)
 

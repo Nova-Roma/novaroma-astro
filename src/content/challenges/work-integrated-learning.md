@@ -152,23 +152,21 @@ After initial scaling, the programme is poised to become the default WIL infrast
 
 The coalition assembled to address this challenge brings together distinctive capabilities across disciplines.
 
-**Education Research and Pedagogical Design**
-University partners with deep co-operative education heritage—particularly the University of Waterloo, whose co-op programme is one of the largest and most established globally—provide methodological rigour, institutional knowledge, and academic credibility. Education researchers design assessment frameworks, evaluate programme impact, and ensure alignment with pedagogical best practices.
+**Francis Wang** (Lead Researcher) — DDes researcher at University of Calgary. 15+ years in engineering and product leadership. Expertise in AI systems, strategic foresight, and cross-disciplinary synthesis of design, policy, and technology.
 
-**AI Engineering and Systems Design**
-AI engineers and machine learning specialists design and maintain the AI toolchain, develop standardised workflows, and ensure technical robustness. They work closely with domain experts toembed AI fluency in discipline-specific contexts, ensuring that AI assistance enhances—not replaces—critical thinking.
+**Larry Smith** (Academic Advisor) — Professor of Economics, University of Waterloo. Expertise in entrepreneurship, innovation ecosystems, and the economics of technology adoption. Provides academic grounding for workforce economics and institutional partnership strategy.
 
-**Workforce Policy and Regulation**
-Policy experts navigate the complex regulatory landscape, liaise with government agencies, and ensure programme compliance with employment standards, data privacy, and education regulations. They also design incentives structures that align stakeholder interests.
+**Parth Sharma** (AI & Student Perspective) — Computer Science, University of Waterloo. Research in data privacy and AI ethics. QVI Problem Pitch Competition finalist. Contributes firsthand student perspective on AI-native learning and co-op experience design.
 
-**Industry Partnerships and Employer Engagement**
-Industry partners contributing real-world problems, placement supervision, and employment pathways. This includes large corporations, SMEs, and startups across sectors—finance, health, engineering, and creative industries. Employer engagement specialists ensure that programme outputs meet market needs.
+**Amanda Wu** (Policy & Responsible AI) — Product leader with 10 years in highly regulated sectors. Drafted policy whitepaper advising government on responsible AI use. Advised UK government's digital service team. Brings workforce policy, regulatory navigation, and responsible AI deployment expertise.
 
-**Nova Roma Coordination**
-Nova Roma, as a nonprofit, serves as the coordination hub, employer of record, and operational backbone. Its neutrality ensures trust across stakeholder groups, and its flexible governance model allows rapid iteration and adaptation.
+**Alex Li** (Design & AI Products) — Director of Product Design at RBC (AI-powered advisor experiences). Previously Questrade, Capital One, IBM. Expertise in designing AI-augmented workflows and making complex systems accessible for diverse users.
 
-**Government Relations**
-Dedicated government relations personnel secure policy alignment, funding commitments, and regulatory accommodation. They work with provincial workforce development ministries, federal employment and social development Canada, and relevant regulatory bodies.
+**James Cheng** (Platform & WIL Practice) — Software consultant and ecosystem builder. Staff Software Engineer (Pivotal Labs/VMware). Teaching Assistant for Enterprise Co-op, University of Waterloo. Direct experience in work-integrated learning delivery and AI-first venture development.
+
+**William Yao** (Finance & Institutional Strategy) — Founder, Nova Roma. Chartered Accountant, ex-Merrill Lynch. Over 40 years in financial services and corporate innovation. Provides Build-to-Manage economics expertise and employer partnership strategy.
+
+**Nova Roma Horizon Innovation Society** — Nonprofit employer-of-record model. Partnership coordination, governance infrastructure, and operational backbone for the timeshare co-op model.
 
 ## 9. Our Approach
 

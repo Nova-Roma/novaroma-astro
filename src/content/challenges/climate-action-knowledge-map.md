@@ -136,19 +136,15 @@ The Knowledge Map scales organically across four dimensions:
 
 ## 8. Team Capability
 
-**Knowledge architecture**: The team brings Perceptiosphere principles for composable knowledge to this challenge. The OPEN framework (Origin, Pathway, Evidence, Navigation) provides a foundation for decomposing patterns.
+**Francis Wang** (Lead Researcher, DDes) — Knowledge architecture and AI systems, primary architect of the composable knowledge framework. 15+ years in engineering and product leadership. Foresight methodology and cross-disciplinary synthesis.
 
-**Permaculture expertise**: Existing design pattern library curated in our vault (swale, berm, zone planning, trophic pyramid, feedback loops, succession, water systems, guilds, succession). The vault contains implementation notes, climate zone applicability, and outcome data.
+**Maria Smirnova** (Systems Design) — Architecture graduate from the University of Waterloo, Founder & CEO of TaskMapper. Brings systems thinking, architectural design methodology, and experience leading R&D at Iterra Advanced. Previously led creative design for WATonomous (autonomous vehicle team).
 
-**Indigenous partnerships**: Formal engagement protocols based on CARE Principles. Existing relationships with indigenous knowledge holders and governance bodies. Community-led governance model established for TEK inclusion.
+**Arwin Tio** (Data Architecture) — Senior Software Engineer at Cruise (General Motors), specialising in data processing for autonomous vehicles. Previously Staff Software Engineer at NextRoll leading the Data Products Team. Expertise in distributed systems, graph databases, and large-scale data architecture.
 
-**Technical implementation**: Graph database experience (Neo4j, JanusGraph). Interactive visualisation (D3.js, Vis.js). AI pattern-matching for recommendation (trained on pattern attributes: climate zone, soil type, water availability, desired outcome).
+**James Cheng** (Platform Engineering) — Software consultant and ecosystem builder with a decade of digital transformation experience across aviation, finance, healthcare, and public sector. Staff Software Engineer (Pivotal Labs/VMware). Systems Design Engineering, University of Waterloo.
 
-**Arcadia Wellness connection**: Regenerative design practice provides real-world validation. Practitioner feedback loops ensure patterns remain actionable and practical.
-
-**Database and schema design**: Existing Obsidian template structure provides a starting point for semantic atom design.
-
-**Open-source management**: GitHub repository infrastructure, contribution guidelines, code of conduct, governance model for decision-making.
+**William Yao** (Strategic Advisory) — Founder, Nova Roma. Chartered Accountant, ex-Merrill Lynch. Over 40 years of experience in financial services, corporate innovation, and entrepreneurship. Provides governance and institutional partnership strategy.
 
 ## 9. Our Approach
 

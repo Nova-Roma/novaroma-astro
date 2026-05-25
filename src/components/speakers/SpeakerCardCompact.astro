@@ -1,0 +1,78 @@
+---
+// Fundations
+import Text from "@/components/fundations/elements/Text.astro";
+// Content
+const speaker = Astro.props.speaker;
+const {
+  name,
+  role,
+  company,
+  location,
+  tags: rawTags,
+  summary,
+  bio,
+  socials,
+} = speaker.data;
+const url = `/people/profile/${speaker.slug}`;
+const tags = Array.isArray(rawTags) ? rawTags.slice(0, 3) : [];
+const description = summary || bio || "";
+const linkedinUrl = socials?.linkedin;
+---
+
+<article class="group relative flex flex-col overflow-hidden transition">
+  <a href={url} title={name} class="absolute inset-0 z-20"></a>
+  <div class="relative flex flex-col h-full">
+    <div
+      class="relative flex flex-col h-full justify-between p-5 bg-accent-500 group-hover:bg-accent-900 duration-300"
+    >
+      <div>
+        <div class="flex items-center justify-between">
+          <Text tag="p" variant="textXS" class="text-base-300 uppercase">
+            {company || role}
+          </Text>
+          {linkedinUrl && (
+            <a
+              href={linkedinUrl}
+              target="_blank"
+              rel="noreferrer"
+              class="relative z-30 text-base-300 hover:text-white text-[10px] uppercase underline-offset-2 hover:underline"
+            >
+              LinkedIn
+            </a>
+          )}
+        </div>
+        <Text
+          tag="h3"
+          variant="textBase"
+          class="text-white font-display uppercase mt-2"
+        >
+          {name}
+        </Text>
+
+        <Text tag="p" variant="textXS" class="text-base-200 mt-2 line-clamp-3">
+          {description}
+        </Text>
+      </div>
+
+      <div class="mt-4 flex items-center justify-between">
+        <Text tag="p" variant="textXS" class="uppercase text-base-300">
+          {location}
+        </Text>
+        <div class="flex flex-wrap gap-x-2">
+          {
+            tags.length > 0 &&
+              tags.map((tag) => (
+                <Text
+                  tag="span"
+                  variant="textXS"
+                  class="capitalize text-base-300"
+                >
+                  {tag}
+                </Text>
+              ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

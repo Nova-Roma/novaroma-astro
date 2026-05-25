@@ -123,29 +123,19 @@ Importantly, the multi-model approach improves with each new AI release. There i
 
 ## Team Capability
 
-**Francis Wang** (DDes researcher):
+**Francis Wang** (Lead Researcher, DDes) — Visualization and AI systems integration. Foresight methodology (scenario planning, weak signal detection). Cross-disciplinary synthesis of design, policy, and technology.
 
-- Visualization and AI systems integration
-- Foresight methodology (scenario planning, weak signal detection)
-- Cross-disciplinary synthesis of design, policy, and technology
+**Barry Wylant** (DDes Supervisor) — Visual storytelling for complex systems. Ecosystem simulation and mapping. Design research methodology for public-sector impact. Creator of the Active Library concept.
 
-**Barry Wylant** (DDes supervisor):
+**Parth Sharma** (AI & Privacy Engineering) — Computer Science, University of Waterloo. Research in data privacy and AI ethics. QVI Problem Pitch Competition finalist. Contributes AI model integration and data governance expertise.
 
-- Visual storytelling for complex systems
-- Ecosystem simulation and mapping
-- Design research methodology for public-sector impact
+**Arwin Tio** (Data Infrastructure) — Senior Software Engineer at Cruise (General Motors), data processing for autonomous vehicles. Previously Staff Software Engineer at NextRoll (Data Products). Expertise in distributed systems and scalable data pipelines for the multi-model AI backend.
 
-**FW.VISION** (strategic foresight practice):
+**James Cheng** (Platform Engineering) — Software consultant and ecosystem builder. Decade of digital transformation experience. Staff Software Engineer (Pivotal Labs/VMware). Systems Design Engineering, University of Waterloo. Leads technical implementation of interactive visualization platform.
 
-- Applied scenario planning for government and industry clients
-- Methods from the APPETITE framework for scenario quality
-- Long-term strategic advisory experience
+**William Yao** (Strategic Foresight & Finance) — Founder, Nova Roma. Chartered Accountant, ex-Merrill Lynch. Over 40 years in financial services and corporate innovation. Provides domain expertise for advisory council use cases and institutional strategy.
 
-**Technical contributors:**
-
-- Multi-model AI integration (Unified API layer across models)
-- Interactive visualization engineering (React + d3.js + WebGL)
-- Backend infrastructure (scenario storage, provenance tracking)
+**FW.VISION** (Strategic Foresight Practice) — Applied scenario planning for government and industry. APPETITE framework for scenario quality assessment. Long-term strategic advisory experience.
 
 ## Our Approach: The AI Agent Council Interface
 
