@@ -1,7 +1,7 @@
 ---
 title: "Climate Action Knowledge Map"
 pubDate: 2026-05-24
-description: "An open, graph-based knowledge system that makes regenerative design patterns — from permaculture to indigenous land management to biodiversity conservation — accessible, composable, and actionable for communities worldwide."
+description: "An open, graph-based knowledge system that makes regenerative design patterns—from permaculture to indigenous land management to biodiversity conservation—accessible, composable, and actionable for communities worldwide."
 tags: [Climate Action, Knowledge Map, Permaculture, Regenerative Agriculture, Indigenous Knowledge, Cooperathon]
 track: "planet"
 sdgs: [13, 15, 10]
@@ -15,7 +15,7 @@ partner_orgs: ["Arcadia Wellness", "Nova Roma Horizon Innovation Society"]
 
 # Climate Action Knowledge Map
 
-An open, graph-based knowledge system that makes regenerative design patterns — from permaculture to indigenous land management to biodiversity conservation — accessible, composable, and actionable for communities worldwide.
+An open, graph-based knowledge system that makes regenerative design patterns—from permaculture to indigenous land management to biodiversity conservation—accessible, composable, and actionable for communities worldwide.
 
 ## 1. Problem Definition
 
@@ -72,7 +72,7 @@ The Climate Action Knowledge Map is defined by five non-negotiable parameters:
 
 ## 4. Impact Integration
 
-**Climate impact:** Carbon sequestration acceleration through knowledge accessibility. When regenerative design patterns move from isolated practice to accessible knowledge, adoption increases. The Rodale Institute (2024) estimates 11 million hectares globally could be converted to regenerative practices with appropriate knowledge support — representing 33-88 million tons CO2e sequestration annually.
+**Climate impact:** Carbon sequestration acceleration through knowledge accessibility. When regenerative design patterns move from isolated practice to accessible knowledge, adoption increases. The Rodale Institute (2024) estimates 11 million hectares globally could be converted to regenerative practices with appropriate knowledge support—representing 33-88 million tons CO2e sequestration annually.
 
 **Biodiversity impact:** Regenerative design patterns are inherently biodiversity-enhancing. Permaculture guilds create habitat mosaics. Indigenous fire management increases habitat heterogeneity. Agroforestry provides corridor connectivity. The map makes these connections visible and navigable.
 
@@ -80,7 +80,7 @@ The Climate Action Knowledge Map is defined by five non-negotiable parameters:
 
 **Educational impact:** The map itself becomes educational infrastructure. Learners navigate from problem to pattern to implementation, building competencies through practical learning. Educators can create learning pathways across patterns.
 
-**Community impact:** A contributable commons creates network effects — each addition enriches all users. The more patterns there are, the more valuable the map becomes for everyone.
+**Community impact:** A contributable commons creates network effects—each addition enriches all users. The more patterns there are, the more valuable the map becomes for everyone.
 
 ## 5. Evidence and Data Requirements
 
@@ -114,7 +114,7 @@ The Knowledge Map scales organically across four dimensions:
 
 **Depth expansion:** Start with permaculture design patterns (existing cards in our vault: swale, berm, zone planning, guilds, succession, water systems). Expand to regenerative agriculture (cover cropping, no-till, rotational grazing), agroforestry (silvopasture, forest gardening), biodiversity corridors, watershed management. Further expand to indigenous fire management, traditional water harvesting, food forest systems.
 
-**Geographic expansion:** Multi-language support (starting with English, Spanish, French, Portuguese). Multi-ecosystem coverage. Community-curated per bioregion — Australian savanna practitioners curate their patterns, Amazonian communities curate theirs, European agroforestry practitioners curate theirs.
+**Geographic expansion:** Multi-language support (starting with English, Spanish, French, Portuguese). Multi-ecosystem coverage. Community-curated per bioregion—Australian savanna practitioners curate their patterns, Amazonian communities curate theirs, European agroforestry practitioners curate theirs.
 
 **Knowledge density expansion:** Each bioregional community adds their local patterns. The commons grows as more practitioners contribute. This creates a virtuous cycle: more patterns attract more users, more users contribute more patterns.
 
@@ -130,21 +130,21 @@ The Knowledge Map scales organically across four dimensions:
 
 - **Premium services**: Custom bioregional analysis for organisations, consulting integration for large land managers, white-label deployment for indigenous-led initiatives that prefer managed infrastructure.
 
-- **Living system**: The Knowledge Map follows Perceptiosphere principles — a Living Archive with Active Library characteristics. The knowledge base improves with use. Pruning outdated patterns is as important as adding new ones. Community curation ensures relevance.
+- **Living system**: The Knowledge Map follows Perceptiosphere principles—a Living Archive with Active Library characteristics. The knowledge base improves with use. Pruning outdated patterns is as important as adding new ones. Community curation ensures relevance.
 
 - **Revenue recycling**: Premium service revenue funds open-source maintenance and indigenous community partnerships. No user data is sold. Revenue flows back to the commons.
 
 ## 8. Team Capability
 
-**Francis Wang** (Lead Researcher, DDes) — Knowledge architecture and AI systems, primary architect of the composable knowledge framework. 15+ years in engineering and product leadership. Foresight methodology and cross-disciplinary synthesis.
+**Francis Wang** (Lead Researcher, DDes): Knowledge architecture and AI systems, primary architect of the composable knowledge framework. 15+ years in engineering and product leadership. Foresight methodology and cross-disciplinary synthesis.
 
-**Maria Smirnova** (Systems Design) — Architecture graduate from the University of Waterloo, Founder & CEO of TaskMapper. Brings systems thinking, architectural design methodology, and experience leading R&D at Iterra Advanced. Previously led creative design for WATonomous (autonomous vehicle team).
+**Maria Smirnova** (Systems Design): Architecture graduate from the University of Waterloo, Founder & CEO of TaskMapper. Brings systems thinking, architectural design methodology, and experience leading R&D at Iterra Advanced. Previously led creative design for WATonomous (autonomous vehicle team).
 
-**Arwin Tio** (Data Architecture) — Senior Software Engineer at Cruise (General Motors), specialising in data processing for autonomous vehicles. Previously Staff Software Engineer at NextRoll leading the Data Products Team. Expertise in distributed systems, graph databases, and large-scale data architecture.
+**Arwin Tio** (Data Architecture): Senior Software Engineer at Cruise (General Motors), specialising in data processing for autonomous vehicles. Previously Staff Software Engineer at NextRoll leading the Data Products Team. Expertise in distributed systems, graph databases, and large-scale data architecture.
 
-**James Cheng** (Platform Engineering) — Software consultant and ecosystem builder with a decade of digital transformation experience across aviation, finance, healthcare, and public sector. Staff Software Engineer (Pivotal Labs/VMware). Systems Design Engineering, University of Waterloo.
+**James Cheng** (Platform Engineering): Software consultant and ecosystem builder with a decade of digital transformation experience across aviation, finance, healthcare, and public sector. Staff Software Engineer (Pivotal Labs/VMware). Systems Design Engineering, University of Waterloo.
 
-**William Yao** (Strategic Advisory) — Founder, Nova Roma. Chartered Accountant, ex-Merrill Lynch. Over 40 years of experience in financial services, corporate innovation, and entrepreneurship. Provides governance and institutional partnership strategy.
+**William Yao** (Strategic Advisory): Founder, Nova Roma. Chartered Accountant, ex-Merrill Lynch. Over 40 years of experience in financial services, corporate innovation, and entrepreneurship. Provides governance and institutional partnership strategy.
 
 ## 9. Our Approach
 
@@ -215,7 +215,7 @@ We build an open, graph-based knowledge system where regenerative design pattern
   - **validated**: Multiple evidence sources, field trials, community validation
   - **canonical**: Widely adopted, peer-reviewed, across-tradition consensus
 
-- Community moderation per bioregion: Local practitioners validate applicability and provide field feedback. pruning is as important as adding — outdated patterns are flagged for review.
+- Community moderation per bioregion: Local practitioners validate applicability and provide field feedback. pruning is as important as adding—outdated patterns are flagged for review.
 
 - Living system: The knowledge base improves with use. Active curation ensures relevance and accuracy.
 
