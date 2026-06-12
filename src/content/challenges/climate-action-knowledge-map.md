@@ -3,7 +3,7 @@ title: "Climate Action Knowledge Map"
 pubDate: 2026-05-24
 description: "An open, graph-based knowledge system that makes regenerative design patterns—from permaculture to indigenous land management to biodiversity conservation—accessible, composable, and actionable for communities worldwide."
 tags: [Climate Action, Knowledge Map, Permaculture, Regenerative Agriculture, Indigenous Knowledge, Cooperathon]
-track: "planet"
+event: "Cooperathon 2026"
 sdgs: [13, 15, 10]
 canonical_url: "https://findcongwang.com/research/challenges/climate-action-knowledge-map"
 cross_posted: true

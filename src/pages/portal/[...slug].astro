@@ -1,0 +1,118 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("portals");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, code, project_type } = entry.data;
+---
+
+<BaseLayout pageTitle={title} description={`Contributor content for ${title}`} noindex={true}>
+  <section>
+    <Wrapper variant="standard" class="py-32">
+      <nav class="text-xs uppercase font-medium text-accent-500 mb-8">
+        <a href={project_type === "challenge" ? "/challenges/" : "/initiatives/"} class="hover:text-gold-600 transition-colors">
+          {project_type === "challenge" ? "Challenges" : "Initiatives"}
+        </a>
+        <span class="mx-2 text-base-400" aria-hidden="true">/</span>
+        <span class="text-accent-600">{title}</span>
+      </nav>
+
+      <header class="max-w-3xl space-y-4">
+        <Text
+          tag="h1"
+          variant="displayMD"
+          class="text-balance text-accent-500 font-display uppercase leading-tight"
+        >
+          {title}
+        </Text>
+      </header>
+
+      {/* Portal Gate - Hidden by default */}
+      <div id="portal-gate" class="mt-12 border border-dashed border-black/15 p-8 text-center bg-base-50">
+        <Text tag="h2" variant="displaySM" class="font-display uppercase text-accent-500 mb-4">
+          Contributor Portal
+        </Text>
+        <Text tag="p" variant="textBase" class="text-base-600 mb-6">
+          This content is restricted to project contributors. Please enter your 4-character access code.
+        </Text>
+        <form id="code-form" class="flex flex-col items-center gap-4 max-w-md mx-auto">
+          <div class="w-full space-y-2">
+            <label for="code-input" class="text-xs uppercase font-medium text-base-600">
+              Enter contributor code
+            </label>
+            <input
+              id="code-input"
+              type="text"
+              maxlength="4"
+              class="w-full px-4 py-3 bg-base-100 border border-accent-500 border-dashed text-base-700 font-mono text-center text-lg uppercase focus:outline-none focus:ring-2 focus:ring-accent-500 transition-all"
+              placeholder="XXXX"
+              aria-describedby="code-error"
+            />
+            <p
+              id="code-error"
+              class="text-xs uppercase font-medium text-red-600 hidden"
+            >
+              Invalid code. Please try again.
+            </p>
+          </div>
+          <Button size="sm" variant="default" type="submit" class="w-full max-w-xs">
+            Unlock Content
+          </Button>
+        </form>
+      </div>
+
+      {/* Portal Content - Hidden by default */}
+      <div id="portal-content" class="hidden mt-12" data-code={code}>
+        <Wrapper variant="prose" class="max-w-none">
+          <Content />
+        </Wrapper>
+      </div>
+    </Wrapper>
+  </section>
+
+  <script is:inline>
+    // On page load, check URL param
+    const params = new URLSearchParams(window.location.search);
+    const urlCode = params.get('code');
+    const gate = document.getElementById('portal-gate');
+    const content = document.getElementById('portal-content');
+    const form = document.getElementById('code-form');
+    const errorEl = document.getElementById('code-error');
+    const input = document.getElementById('code-input');
+
+    if (content) {
+      const expectedCode = content.dataset.code;
+
+      if (urlCode && urlCode === expectedCode) {
+        gate.classList.add('hidden');
+        content.classList.remove('hidden');
+      } else {
+        // Form submission handler
+        form?.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const submittedCode = input?.value.toUpperCase() || '';
+          if (submittedCode === expectedCode) {
+            gate.classList.add('hidden');
+            content.classList.remove('hidden');
+            history.replaceState(null, '', `?code=${submittedCode}`);
+          } else {
+            errorEl?.classList.remove('hidden');
+            input?.focus();
+          }
+        });
+      }
+    }
+  </script>
+</BaseLayout>

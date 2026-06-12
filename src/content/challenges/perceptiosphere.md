@@ -3,7 +3,7 @@ title: "Perceptiosphere: A Sovereign Knowledge Architecture"
 pubDate: 2026-05-24
 description: "An open-source, AI-augmented knowledge architecture that preserves institutional wisdom, enables composable collaboration, and maintains contextual integrity across generations."
 tags: [Perceptiosphere, Knowledge Architecture, Living Archive, Open Source, Cooperathon]
-track: "university"
+event: "Cooperathon 2026"
 sdgs: [4, 9, 10]
 canonical_url: "https://findcongwang.com/research/challenges/perceptiosphere"
 cross_posted: true

@@ -3,7 +3,7 @@ title: "Sovereign Distributed Energy and AI for Canada"
 pubDate: 2026-05-24
 description: "Building domestic AI infrastructure that leverages Canada's geographic and energy advantages to retain talent, reduce dependency on foreign compute, and prepare for a climate-shifted future."
 tags: [Sovereign AI, Canada, Compute Infrastructure, Decentralized Energy, Cooperathon]
-track: "prosperity"
+event: "Cooperathon 2026"
 sdgs: [9, 7, 12]
 canonical_url: "https://findcongwang.com/research/challenges/sovereign-ai-for-canada"
 cross_posted: true

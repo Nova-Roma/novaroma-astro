@@ -7,7 +7,7 @@ const challenges = defineCollection({
     pubDate: z.date(),
     description: z.string(),
     tags: z.array(z.string()).default([]),
-    track: z.enum(["people", "planet", "prosperity", "university"]).optional(),
+    event: z.string().optional(),
     sdgs: z.array(z.number()).default([]),
     canonical_url: z.string().url().optional(),
     cross_posted: z.boolean().default(false),
@@ -15,6 +15,18 @@ const challenges = defineCollection({
     domain_theme: z.string().optional(),
     parent_questions: z.array(z.string()).default([]),
     partner_orgs: z.array(z.string()).default([]),
+  }),
+});
+
+const portals = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    project_slug: z.string(),
+    project_type: z.enum(["challenge", "initiative"]),
+    code: z.string(),
+    pubDate: z.date(),
+    updatedDate: z.date().optional(),
   }),
 });
 
@@ -164,4 +176,5 @@ export const collections = {
   entities: entity,
   careers,
   challenges,
+  portals,
 };

@@ -3,6 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import ChallengeCard from "@/components/content/ChallengeCard.astro";
 import { getCollection } from "astro:content";
 
 const SDG_COLORS: Record<number, { bg: string; label: string }> = {
@@ -25,29 +26,49 @@ const SDG_COLORS: Record<number, { bg: string; label: string }> = {
   17: { bg: "#19486A", label: "Partnerships" },
 };
 
-const TRACK_STYLES: Record<string, string> = {
-  people: "bg-accent-500 text-white",
-  planet: "bg-green-700 text-white",
-  prosperity: "bg-amber-600 text-white",
-  university: "bg-base-700 text-white",
-};
-
 const challenges = (await getCollection("challenges")).sort(
   (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
+
+// Extract unique values for sidebar sections
+const uniqueEvents = new Map<string, number>();
+const uniqueSdgs = new Map<number, number>();
+const uniqueTags = new Map<string, number>();
+
+for (const challenge of challenges) {
+  // Events
+  if (challenge.data.event) {
+    uniqueEvents.set(challenge.data.event, (uniqueEvents.get(challenge.data.event) || 0) + 1);
+  }
+  // SDGs
+  for (const sdg of challenge.data.sdgs) {
+    uniqueSdgs.set(sdg, (uniqueSdgs.get(sdg) || 0) + 1);
+  }
+  // Tags
+  for (const tag of challenge.data.tags) {
+    uniqueTags.set(tag, (uniqueTags.get(tag) || 0) + 1);
+  }
+}
+
+// Sort SDGs for consistent display
+const sortedSdgs = Array.from(uniqueSdgs.keys()).sort((a, b) => a - b);
+
+// Sort tags alphabetically for letter pagination
+const allTagsArray = Array.from(uniqueTags.entries())
+  .sort((a, b) => a[0].localeCompare(b[0]));
+const tagsPerPage = 30;
+const totalTagPages = Math.ceil(allTagsArray.length / tagsPerPage);
 ---
 
-<BaseLayout pageTitle="Innovation Challenges" description="Open innovation challenges seeking diverse solutions to complex problems.">
+<BaseLayout pageTitle="Innovation Challenges" description="Open problem specifications backed by deep research. Join our coalition or attempt the challenge your own way.">
   <section>
     <Wrapper variant="standard" class="py-32">
-      <div>
-        <Text tag="p" variant="textXS" class="uppercase text-base-600">
-          Cooperathon 2026
-        </Text>
+      <!-- Page Header -->
+      <div class="mb-8">
         <Text
           tag="h1"
           variant="displayMD"
-          class="text-balance text-accent-500 font-display uppercase leading-tight mt-8"
+          class="text-balance text-accent-500 font-display uppercase leading-tight"
         >
           Innovation Challenges
         </Text>
@@ -60,42 +81,143 @@ const challenges = (await getCollection("challenges")).sort(
         </Text>
       </div>
 
-      <div class="mt-12 space-y-6">
-        {challenges.map((challenge) => (
-          <a href={`/challenges/${challenge.slug}/`} class="block border border-dashed border-black/15 bg-base-100 p-6 sm:p-8 hover:bg-accent-50 transition-colors">
-            <div class="flex flex-wrap items-center gap-2 mb-3">
-              <span class="text-[10px] uppercase font-medium px-2 py-0.5 bg-base-900 text-white">
-                Cooperathon 2026
-              </span>
-              {challenge.data.track && (
-                <span class={`text-[10px] uppercase font-medium px-2 py-0.5 ${TRACK_STYLES[challenge.data.track] || "bg-base-200 text-base-700"}`}>
-                  {challenge.data.track}
-                </span>
-              )}
-              {challenge.data.sdgs.map((sdg) => (
-                <span
-                  class="text-[10px] font-medium px-1.5 py-0.5 text-white"
-                  style={`background-color: ${SDG_COLORS[sdg]?.bg || '#666'}`}
-                >
-                  SDG {sdg}
-                </span>
-              ))}
+      <!-- Two-column grid: Main content (left) + Filter Sidebar (right) -->
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_minmax(0,16rem)] md:gap-8">
+        <!-- Main Content (Challenge Cards) -->
+        <div class="space-y-6 order-1">
+          {challenges.map((challenge) => (
+            <ChallengeCard challenge={challenge} variant="full" />
+          ))}
+          
+          {challenges.length === 0 && (
+            <div class="text-center py-12 text-base-500">
+              No challenges available.
             </div>
-            <span class="block font-medium text-accent-600 text-lg">
-              {challenge.data.title}
-            </span>
-            <span class="block mt-1 text-sm text-base-600 line-clamp-2">
-              {challenge.data.description}
-            </span>
-            {challenge.data.partner_orgs.length > 0 && (
-              <span class="block mt-3 text-xs text-base-500">
-                Coalition: {challenge.data.partner_orgs.join(" · ")}
-              </span>
+          )}
+        </div>
+
+        <!-- Filter Sidebar (Right) -->
+        <aside class="order-2 sticky top-32 space-y-6">
+          {/* Active Filters (injected by JS) */}
+          <div id="active-filters" class="flex flex-wrap gap-2 items-center">
+            <span class="text-xs text-base-400 italic">None</span>
+          </div>
+
+          {/* Event Section */}
+          {uniqueEvents.size > 0 && (
+            <div>
+              <Text tag="h3" variant="textXS" class="uppercase font-bold text-accent-500 mb-2">
+                Event
+              </Text>
+              <div class="flex flex-wrap gap-2">
+                <button
+                  data-filter-event="all"
+                  class="event-filter px-3 py-1 text-xs uppercase font-medium rounded-full text-accent-500 font-bold border border-accent-500 hover:text-accent-600 transition-colors"
+                >
+                  All
+                </button>
+                {Array.from(uniqueEvents.entries()).map(([event, count]) => (
+                  <button
+                    key={event}
+                    data-filter-event={event}
+                    class="event-filter px-3 py-1 text-xs uppercase font-medium rounded-full text-base-600 hover:text-accent-500 hover:bg-accent-50 transition-colors"
+                  >
+                    {event} ({count})
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* SDG Section: Colored boxes with numbers only */}
+          {uniqueSdgs.size > 0 && (
+            <div>
+              <Text tag="h3" variant="textXS" class="uppercase font-bold text-accent-500 mb-2">
+                SDG
+              </Text>
+              <div class="flex flex-wrap gap-1.5">
+                {sortedSdgs.map((sdg) => (
+                  <button
+                    key={sdg}
+                    data-filter-sdg={sdg}
+                    title={`SDG ${sdg}: ${SDG_COLORS[sdg]?.label}`}
+                    style={`background-color: ${SDG_COLORS[sdg]?.bg}`}
+                    class="sdg-filter w-7 h-7 text-[10px] font-bold text-white flex items-center justify-center rounded hover:ring-2 hover:ring-offset-1 hover:ring-accent-500 transition-all"
+                  >
+                    {sdg}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Tags Section: Search + paginated list */}
+          <div>
+            <Text tag="h3" variant="textXS" class="uppercase font-bold text-accent-500 mb-2">
+              Tags
+            </Text>
+            
+            {/* Search Input */}
+            <input
+              type="text"
+              placeholder="Filter tags..."
+              class="border border-dashed border-black/15 bg-base-50 px-2 py-1 text-xs w-full mb-3 tag-search-input"
+              id="tag-search"
+            />
+
+            {/* Letter-range Pagination */}
+            <div class="flex flex-wrap gap-1 mb-3">
+              <button
+                data-tag-page="1"
+                class="tag-page-btn px-2 py-0.5 text-xs tag-page-btn-1"
+              >
+                All
+              </button>
+              {["A–F", "G–L", "M–R", "S–Z"].map((range, idx) => {
+                const page = idx + 2;
+                return (
+                  <button
+                    key={range}
+                    data-tag-page={page.toString()}
+                    class="tag-page-btn px-2 py-0.5 text-xs tag-page-btn-{page}"
+                  >
+                    {range}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Tag List */}
+            <div class="flex flex-wrap gap-2 tag-list-container">
+              <div id="tag-list-loading" class="text-xs text-base-400 italic w-full text-center py-2">
+                Loading tags...
+              </div>
+            </div>
+
+            {/* Tag Pagination Buttons */}
+            {allTagsArray.length > tagsPerPage && (
+              <div class="flex justify-between mt-3 tag-pagination">
+                <button
+                  data-tag-page-prev="true"
+                  disabled
+                  class="px-3 py-1 text-xs hover:bg-base-100 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  ← Prev
+                </button>
+                <button
+                  data-tag-page-next="true"
+                  disabled
+                  class="px-3 py-1 text-xs hover:bg-base-100 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  Next →
+                </button>
+              </div>
             )}
-          </a>
-        ))}
+          </div>
+        </aside>
       </div>
 
+      <!-- CTA Section -->
       <section class="gap-x-12 gap-y-8 border border-white/10 bg-accent-500 p-8 md:flex md:items-center md:justify-between mt-24">
         <div class="max-w-2xl space-y-4">
           <Text tag="h2" variant="displaySM" class="font-display uppercase text-white">
@@ -116,4 +238,238 @@ const challenges = (await getCollection("challenges")).sort(
       </section>
     </Wrapper>
   </section>
+
+  <script is:inline>
+  (function() {
+    // Parse URL params on load
+    function getUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        event: params.get('event') || null,
+        sdgs: params.get('sdgs') ? params.get('sdgs').split(',').map(s => parseInt(s)) : [],
+        tags: params.get('tags') ? params.get('tags').split(',').filter(Boolean) : [],
+      };
+    }
+
+    const items = document.querySelectorAll('.filter-item');
+    const eventBtns = document.querySelectorAll('.event-filter');
+    const sdgBtns = document.querySelectorAll('.sdg-filter');
+    const tagBtns = document.querySelectorAll('.tag-filter');
+    const tagPageBtns = document.querySelectorAll('.tag-page-btn');
+    const tagSearchInput = document.getElementById('tag-search');
+    const tagListContainer = document.querySelector('.tag-list-container');
+    
+    let activeEvent = null; // string or null
+    let activeSdgs = new Set(); // set of numbers
+    let activeTags = new Set(); // set of strings
+    let activeTagPage = 1; // page number for tag listing
+    let allTags = []; // full tags array for pagination
+    
+    // Load all tags for client-side pagination
+    function loadTags() {
+      // Collect all tags from cards
+      const tagsSet = new Set();
+      items.forEach(item => {
+        const tags = item.dataset.tags || '';
+        tags.split(',').filter(Boolean).forEach(t => tagsSet.add(t.trim()));
+      });
+      allTags = Array.from(tagsSet).sort();
+      
+      // Render tags with filter attribute
+      renderTagButtons();
+    }
+    
+    function renderTagButtons() {
+      const start = (activeTagPage - 1) * 30;
+      const end = start + 30;
+      const pageTags = allTags.slice(start, end);
+      
+      const filters = new URLSearchParams(window.location.search);
+      const activeTagFilter = filters.get('tags') ? filters.get('tags').split(',').filter(Boolean) : [];
+      
+      let html = '';
+      if (pageTags.length === 0) {
+        html = '<span class="text-xs text-base-400 italic w-full text-center py-2">No tags found</span>';
+      } else {
+        pageTags.forEach(tag => {
+          const isActive = activeTagFilter.includes(tag);
+          html += `
+            <button
+              data-filter-tag="${tag}"
+              class="tag-filter text-left text-xs py-0.5 px-1 -mx-1 rounded hover:bg-base-100 ${isActive ? 'text-accent-500 font-bold bg-base-100' : 'text-base-600 hover:text-accent-500'}"
+            >
+              ${tag}
+            </button>
+          `;
+        });
+      }
+      tagListContainer.innerHTML = html;
+      
+      // Update pagination buttons
+      updateTagPagination();
+    }
+    
+    function updateTagPagination() {
+      const totalTags = allTags.length;
+      const totalPages = Math.ceil(totalTags / 30);
+      const prevBtn = document.querySelector('[data-tag-page-prev="true"]');
+      const nextBtn = document.querySelector('[data-tag-page-next="true"]');
+      
+      if (prevBtn) {
+        prevBtn.disabled = activeTagPage === 1;
+      }
+      if (nextBtn) {
+        nextBtn.disabled = activeTagPage === totalPages;
+      }
+      
+      // Update active state on page buttons
+      tagPageBtns.forEach(btn => {
+        const page = parseInt(btn.dataset.tagPage);
+        btn.classList.toggle('text-accent-500', page === activeTagPage);
+        btn.classList.toggle('font-bold', page === activeTagPage);
+        btn.classList.toggle('text-base-600', page !== activeTagPage);
+      });
+    }
+    
+    function updateUrl() {
+      const params = new URLSearchParams();
+      if (activeEvent) params.set('event', activeEvent);
+      if (activeSdgs.size) params.set('sdgs', [...activeSdgs].join(','));
+      if (activeTags.size) params.set('tags', [...activeTags].join(','));
+      if (activeTagPage > 1) params.set('tagPage', activeTagPage.toString());
+      
+      const qs = params.toString();
+      history.replaceState({}, '', qs ? `?${qs}` : window.location.pathname);
+    }
+    
+    function applyFilters() {
+      // Show/hide cards
+      items.forEach(item => {
+        const itemEvent = item.dataset.event;
+        const itemSdgs = (item.dataset.sdgs || '').split(',').filter(Boolean).map(Number);
+        const itemTags = (item.dataset.tags || '').split(',').filter(Boolean);
+        
+        let show = true;
+        if (activeEvent && itemEvent !== activeEvent) show = false;
+        if (activeSdgs.size && !itemSdgs.some(s => activeSdgs.has(s))) show = false;
+        if (activeTags.size && !itemTags.some(t => activeTags.has(t))) show = false;
+        
+        item.classList.toggle('hidden', !show);
+      });
+      
+      // Update event button states
+      eventBtns.forEach(btn => {
+        const val = btn.dataset.filterEvent;
+        const isActive = val === activeEvent;
+        const isAll = val === 'all' && !activeEvent;
+        
+        btn.classList.toggle('text-accent-500', isActive || isAll);
+        btn.classList.toggle('font-bold', isActive || isAll);
+        btn.classList.toggle('border-accent-500', isActive || isAll);
+        btn.classList.toggle('text-base-600', !isActive && !isAll);
+        btn.classList.toggle('bg-accent-50', isActive || isAll);
+      });
+      
+      // Update SDG button states
+      sdgBtns.forEach(btn => {
+        const sdg = parseInt(btn.dataset.filterSdg);
+        const isActive = activeSdgs.has(sdg);
+        btn.classList.toggle('ring-2', isActive);
+        btn.classList.toggle('ring-accent-500', isActive);
+        btn.classList.toggle('opacity-50', !isActive && activeSdgs.size > 0 && activeSdgs.size !== 17);
+      });
+      
+      // Update tag button states (for active tags shown)
+      tagBtns.forEach(btn => {
+        const tag = btn.dataset.filterTag;
+        const isActive = activeTags.has(tag);
+        btn.classList.toggle('text-accent-500', isActive);
+        btn.classList.toggle('font-bold', isActive);
+        btn.classList.toggle('bg-base-100', isActive);
+        btn.classList.toggle('text-base-600', !isActive);
+      });
+      
+      updateUrl();
+    }
+    
+    // Event button clicks
+    eventBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = btn.dataset.filterEvent;
+        activeEvent = val === 'all' ? null : (activeEvent === val ? null : val);
+        activeTagPage = 1; // Reset tag page on filter change
+        applyFilters();
+      });
+    });
+    
+    // SDG button clicks (toggle)
+    sdgBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sdg = parseInt(btn.dataset.filterSdg);
+        if (activeSdgs.has(sdg)) activeSdgs.delete(sdg);
+        else activeSdgs.add(sdg);
+        activeTagPage = 1; // Reset tag page on filter change
+        applyFilters();
+      });
+    });
+    
+    // Tag button clicks (toggle)
+    document.addEventListener('click', (e) => {
+      const tagBtn = e.target.closest('.tag-filter');
+      if (tagBtn) {
+        e.preventDefault();
+        const tag = tagBtn.dataset.filterTag;
+        if (activeTags.has(tag)) activeTags.delete(tag);
+        else activeTags.add(tag);
+        applyFilters();
+      }
+    });
+    
+    // Tag page button clicks
+    tagPageBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = parseInt(btn.dataset.tagPage);
+        activeTagPage = page;
+        renderTagButtons();
+        updateUrl();
+      });
+    });
+    
+    // Tag search input
+    if (tagSearchInput) {
+      let debounceTimer;
+      tagSearchInput.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          const query = tagSearchInput.value.toLowerCase();
+          const allTagBtns = document.querySelectorAll('.tag-filter');
+          
+          allTagBtns.forEach(btn => {
+            const tag = btn.dataset.filterTag || '';
+            if (tag.toLowerCase().includes(query)) {
+              btn.classList.remove('hidden');
+            } else {
+              btn.classList.add('hidden');
+            }
+          });
+        }, 150);
+      });
+    }
+    
+    // Load tags on DOM ready
+    if (items.length > 0) {
+      loadTags();
+    }
+    
+    // On page load: read URL params
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('event')) activeEvent = params.get('event');
+    if (params.get('sdgs')) params.get('sdgs').split(',').forEach(s => activeSdgs.add(parseInt(s)));
+    if (params.get('tags')) params.get('tags').split(',').forEach(t => activeTags.add(t));
+    if (params.get('tagPage')) activeTagPage = parseInt(params.get('tagPage'));
+    
+    applyFilters();
+  })();
+  </script>
 </BaseLayout>

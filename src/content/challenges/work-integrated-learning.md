@@ -2,8 +2,7 @@
 title: "Work-Integrated Learning for the AI-Native Workforce"
 pubDate: 2026-05-24
 description: "Redesigning co-op and experiential learning for an era where AI automates entry-level roles, producing AI-native professionals who create value rather than compete with automation."
-tags: [Work-Integrated Learning, AI-Native Workforce, Future of Work, Cooperathon]
-track: "people"
+tags: [Work-Integrated Learning, AI-Native Workforce, Future of Work]
 sdgs: [4, 8, 17]
 canonical_url: "https://findcongwang.com/research/challenges/work-integrated-learning"
 cross_posted: true
@@ -12,6 +11,8 @@ domain_theme: "Education & Workforce"
 parent_questions: ["ai-education", "living-archive"]
 partner_orgs: ["Nova Roma Horizon Innovation Society", "FW.VISION"]
 ---
+
+*This research challenge continues as a Nova Roma Horizon initiative advancing AI-native workforce models and experiential learning frameworks.*
 
 ## 1. Problem Definition
 

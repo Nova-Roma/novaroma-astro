@@ -2,8 +2,7 @@
 title: "Innovation Advisory Council Dashboard"
 pubDate: 2026-05-24
 description: "An interactive AI-augmented visualization platform that surfaces scenario trajectories and enables long-term strategic foresight through multi-model deliberation."
-tags: [Innovation Dashboard, Strategic Foresight, AI Advisory, Visualization, Cooperathon]
-track: "university"
+tags: [Innovation Dashboard, Strategic Foresight, AI Advisory, Visualization]
 sdgs: [9, 13, 11]
 canonical_url: "https://findcongwang.com/research/challenges/innovation-advisory-dashboard"
 cross_posted: true
@@ -12,6 +11,8 @@ domain_theme: "Governance & Foresight"
 parent_questions: ["ai-collaboration"]
 partner_orgs: ["FW.VISION", "Nova Roma Horizon Innovation Society"]
 ---
+
+*This research challenge continues as a Nova Roma Horizon initiative exploring long-term innovation governance through AI-augmented advisory systems.*
 
 ## Problem Definition
 
